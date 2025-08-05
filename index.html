@@ -1,0 +1,2081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thinking Interface Design</title>
+    <style>
+        @font-face {
+            font-family: 'Helvetica Neue';
+            src: local('Helvetica Neue'), local('HelveticaNeue'), local('Helvetica');
+        }
+        
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --neon-pink: #FF006E;
+            --neon-blue: #3A86FF;
+            --neon-purple: #8338EC;
+            --neon-cyan: #06FFE4;
+            --neon-orange: #FF7A00;
+            --dark-bg: #0a0a0a;
+            --glass-bg: rgba(0, 0, 0, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --shimmer-pink: rgba(255, 0, 110, 0.1);
+            --shimmer-cyan: rgba(6, 255, 228, 0.1);
+            --shimmer-default: rgba(255, 255, 255, 0.1);
+            
+            /* Common gradients */
+            --gradient-cyan-blue: linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-blue) 100%);
+            --gradient-blue-purple: linear-gradient(135deg, var(--neon-blue) 0%, var(--neon-purple) 100%);
+            --gradient-pink-orange: linear-gradient(135deg, var(--neon-pink) 0%, var(--neon-orange) 100%);
+            --gradient-purple-pink: linear-gradient(135deg, var(--neon-purple) 0%, var(--neon-pink) 100%);
+            --gradient-three-color: linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-blue) 50%, var(--neon-purple) 100%);
+            
+            /* Common transitions */
+            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-fast: all 0.3s ease;
+            
+            /* Common spacing */
+            --section-padding: clamp(80px, 12vh, 120px) clamp(20px, 5vw, 60px);
+            --container-max-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        /* Background effects - consolidated */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(138, 43, 226, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 30%, rgba(255, 0, 110, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(58, 134, 255, 0.1) 0%, transparent 50%),
+                linear-gradient(180deg, #0a0a0a 0%, #1a0a2a 100%);
+            z-index: -3;
+        }
+        
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(138, 43, 226, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(138, 43, 226, 0.08) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: grid-pulse 4s ease-in-out infinite;
+            z-index: -2;
+            opacity: 0.4;
+        }
+        
+        @keyframes grid-pulse {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.4; }
+        }
+        
+        /* Common utility classes */
+        .container {
+            max-width: var(--container-max-width);
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .grid-background {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            opacity: 0.4;
+        }
+
+        .grid-background--cyan {
+            background-image: 
+                linear-gradient(rgba(6, 255, 228, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(6, 255, 228, 0.08) 1px, transparent 1px);
+            background-size: 70px 70px;
+            animation: grid-shift-cyan 10s ease-in-out infinite;
+        }
+
+        .grid-background--pink {
+            background-image: 
+                linear-gradient(rgba(255, 0, 110, 0.15) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 0, 110, 0.15) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: grid-glow-pink 3s ease-in-out infinite alternate;
+        }
+
+        .grid-background--blue {
+            background-image: 
+                linear-gradient(rgba(58, 134, 255, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(58, 134, 255, 0.08) 1px, transparent 1px),
+                linear-gradient(45deg, rgba(6, 255, 228, 0.03) 1px, transparent 1px),
+                linear-gradient(-45deg, rgba(6, 255, 228, 0.03) 1px, transparent 1px);
+            background-size: 80px 80px, 80px 80px, 40px 40px, 40px 40px;
+            animation: grid-shift-blue 8s ease-in-out infinite;
+        }
+
+        .grid-background--orange {
+            background-image: 
+                linear-gradient(rgba(255, 122, 0, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 122, 0, 0.08) 1px, transparent 1px),
+                linear-gradient(45deg, rgba(255, 0, 110, 0.03) 1px, transparent 1px),
+                linear-gradient(-45deg, rgba(255, 0, 110, 0.03) 1px, transparent 1px);
+            background-size: 90px 90px, 90px 90px, 45px 45px, 45px 45px;
+            animation: grid-flow-orange 12s linear infinite;
+        }
+
+        @keyframes grid-shift-cyan {
+            0%, 100% { opacity: 0.3; transform: translate(0, 0); }
+            50% { opacity: 0.5; transform: translate(1px, 1px); }
+        }
+
+        @keyframes grid-glow-pink {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.6; }
+        }
+
+        @keyframes grid-shift-blue {
+            0%, 100% { opacity: 0.4; transform: translate(0, 0); }
+            50% { opacity: 0.6; transform: translate(2px, 2px); }
+        }
+
+        @keyframes grid-flow-orange {
+            0% { opacity: 0.3; transform: translate(0, 0) rotate(0deg); }
+            25% { opacity: 0.5; transform: translate(1px, -1px) rotate(0.2deg); }
+            50% { opacity: 0.4; transform: translate(0, -2px) rotate(0deg); }
+            75% { opacity: 0.6; transform: translate(-1px, -1px) rotate(-0.2deg); }
+            100% { opacity: 0.3; transform: translate(0, 0) rotate(0deg); }
+        }
+
+        .glass-card {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            backdrop-filter: blur(20px);
+            padding: clamp(20px, 3.5vh, 32px);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--shimmer-default), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .glass-card:hover::before {
+            left: 100%;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: var(--gradient-three-color);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: clamp(14px, 1.8vw, 16px);
+            font-weight: 300;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 8px 25px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(58, 134, 255, 0.4);
+        }
+
+        .section {
+            min-height: 100vh;
+            padding: var(--section-padding);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 300;
+            position: relative;
+            scroll-margin-top: 30px;
+        }
+
+        .section-title {
+            font-size: clamp(2.2rem, 5.5vw, 3.5rem);
+            font-weight: 200;
+            line-height: 1.2;
+            margin-bottom: clamp(30px, 5vh, 60px);
+            text-align: left;
+            letter-spacing: -0.02em;
+        }
+
+        .section-content {
+            position: relative;
+            z-index: 3;
+        }
+
+        .line-accent {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            border-radius: 2px;
+        }
+
+        .text-with-accent {
+            position: relative;
+            padding-left: clamp(16px, 2.5vw, 30px);
+        }
+
+        /* Universal paragraph spacing for all content sections */
+        .section-content p,
+        .glass-card p,
+        .principle-content p {
+            margin-bottom: clamp(16px, 2.5vh, 24px);
+        }
+
+        .section-content p:last-child,
+        .glass-card p:last-child,
+        .principle-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+        
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px clamp(20px, 5vw, 60px);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .logo-svg {
+            height: clamp(35px, 5vw, 55px);
+            width: auto;
+            fill: var(--white);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: clamp(160px, 25vh, 240px) clamp(20px, 5vw, 60px) clamp(80px, 15vh, 140px);
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: left;
+            position: relative;
+            min-height: clamp(90vh, 95vh, 100vh);
+        }
+        
+        .hero-message {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 200;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            max-width: 1100px;
+        }
+        
+        .hero-message.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .hero-message .second-line {
+            font-size: clamp(1.4rem, 3.2vw, 2.4rem);
+            font-weight: 300;
+            display: block;
+            margin-top: clamp(16px, 2vh, 24px);
+            color: rgba(255, 255, 255, 0.85);
+        }
+        
+        .hero-message .highlight {
+            background: var(--gradient-three-color);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        /* Section-specific styles */
+        #communication-landscape { 
+            background: linear-gradient(135deg, rgba(6, 255, 228, 0.05) 0%, rgba(58, 134, 255, 0.05) 100%); 
+        }
+
+        #everyone-is-selling-magic { 
+            background: linear-gradient(135deg, rgba(131, 56, 236, 0.05) 0%, rgba(255, 0, 110, 0.05) 100%);
+            align-items: flex-start;
+            min-height: auto;
+        }
+
+        .magic-title .highlight {
+            background: linear-gradient(135deg, var(--neon-pink) 0%, var(--neon-purple) 50%, var(--neon-orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 300;
+            text-shadow: 0 0 30px rgba(255, 0, 110, 0.3);
+        }
+
+        .magic-body {
+            display: grid;
+            gap: clamp(30px, 5vh, 60px);
+            font-size: clamp(1rem, 2.2vw, 1.2rem);
+            line-height: 1.7;
+        }
+
+        .magic-line-accent {
+            background: linear-gradient(180deg, var(--neon-pink) 0%, var(--neon-purple) 100%);
+            box-shadow: 0 0 10px rgba(255, 0, 110, 0.5);
+        }
+
+        .magic-solution strong {
+            background: var(--gradient-cyan-blue);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 400;
+        }
+
+        .magic-solution:hover {
+            border-color: rgba(255, 0, 110, 0.3);
+            box-shadow: 0 8px 32px rgba(255, 0, 110, 0.15);
+        }
+
+        .magic-solution::before {
+            background: linear-gradient(90deg, transparent, var(--shimmer-pink), transparent);
+        }
+
+        /* Patterns Section */
+        #patterns { 
+            background: linear-gradient(135deg, rgba(58, 134, 255, 0.05) 0%, rgba(6, 255, 228, 0.05) 100%);
+            align-items: center;
+        }
+
+        #patterns .section-title {
+            margin-bottom: clamp(20px, 2vh, 30px);
+        }
+
+        .patterns-description {
+            font-size: clamp(1rem, 2.2vw, 1.2rem);
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: clamp(40px, 6vh, 60px);
+        }
+
+        .pattern-category {
+            margin-bottom: clamp(40px, 6vh, 60px);
+        }
+
+        .category-title {
+            font-size: clamp(1.8rem, 4vw, 2.4rem);
+            font-weight: 200;
+            margin-bottom: clamp(20px, 3vh, 30px);
+        }
+
+        .category-title.executive { background: var(--gradient-cyan-blue); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .category-title.business { background: var(--gradient-pink-orange); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .category-title.analytics { background: var(--gradient-purple-pink); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+        .patterns-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .pattern-pill {
+            backdrop-filter: blur(20px);
+            border-radius: 50px;
+            padding: 6px 16px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            font-size: clamp(0.75rem, 1.6vw, 0.9rem);
+            font-weight: 300;
+            position: relative;
+            overflow: hidden;
+            user-select: none;
+            white-space: nowrap;
+            letter-spacing: 0.01em;
+        }
+
+        .pattern-pill::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .pattern-pill:hover::before { left: 100%; }
+        .pattern-pill:hover { transform: translateY(-2px) scale(1.02); }
+
+        .pattern-pill.executive {
+            background: rgba(58, 134, 255, 0.8);
+            border: 1px solid rgba(58, 134, 255, 1);
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .pattern-pill.business {
+            background: rgba(255, 0, 110, 0.8);
+            border: 1px solid rgba(255, 0, 110, 1);
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .pattern-pill.analytics {
+            background: rgba(131, 56, 236, 0.8);
+            border: 1px solid rgba(131, 56, 236, 1);
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .pattern-pill.executive:hover,
+        .pattern-pill.executive.selected {
+            background: rgba(58, 134, 255, 1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 0 20px rgba(58, 134, 255, 0.6);
+        }
+
+        .pattern-pill.business:hover,
+        .pattern-pill.business.selected {
+            background: rgba(255, 0, 110, 1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 0, 110, 0.6);
+        }
+
+        .pattern-pill.analytics:hover,
+        .pattern-pill.analytics.selected {
+            background: rgba(131, 56, 236, 1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 0 20px rgba(131, 56, 236, 0.6);
+        }
+
+        /* Pattern Modal */
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-fast);
+            backdrop-filter: blur(10px);
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .pattern-content {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            width: min(90vw, 800px);
+            max-height: 80vh;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(40px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+            box-shadow: 0 50px 150px rgba(0, 0, 0, 0.8), 0 0 100px rgba(138, 43, 226, 0.3);
+        }
+
+        .pattern-content p {
+            font-size: clamp(1rem, 2.2vw, 1.2rem);
+            font-weight: 300;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            text-align: left;
+            margin-bottom: 0;
+        }
+
+        .pattern-content.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .pattern-content h3 {
+            font-size: clamp(1.8rem, 4vw, 2.4rem);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+        }
+
+        .pattern-content.executive { border-color: rgba(58, 134, 255, 0.3); box-shadow: 0 50px 150px rgba(0, 0, 0, 0.8), 0 0 100px rgba(58, 134, 255, 0.2); }
+        .pattern-content.business { border-color: rgba(255, 0, 110, 0.3); box-shadow: 0 50px 150px rgba(0, 0, 0, 0.8), 0 0 100px rgba(255, 0, 110, 0.2); }
+        .pattern-content.analytics { border-color: rgba(131, 56, 236, 0.3); box-shadow: 0 50px 150px rgba(0, 0, 0, 0.8), 0 0 100px rgba(131, 56, 236, 0.2); }
+
+        .pattern-content.executive h3 { background: var(--gradient-cyan-blue); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .pattern-content.business h3 { background: var(--gradient-pink-orange); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .pattern-content.analytics h3 { background: var(--gradient-purple-pink); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+        .modal-controls {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .close-btn:hover {
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(90deg);
+        }
+
+        .next-pattern-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: clamp(14px, 1.8vw, 16px);
+            font-weight: 300;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            backdrop-filter: blur(20px);
+            white-space: nowrap;
+            margin-top: 2rem;
+        }
+
+        .next-pattern-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Different Realities Section */
+        #different-realities { 
+            background: linear-gradient(135deg, rgba(255, 0, 110, 0.05) 0%, rgba(255, 122, 0, 0.05) 100%);
+            align-items: flex-start;
+            min-height: auto;
+        }
+
+        .realities-title {
+            background: linear-gradient(135deg, var(--neon-pink) 0%, var(--neon-orange) 50%, var(--neon-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .realities-body {
+            display: grid;
+            gap: clamp(40px, 6vh, 80px);
+            font-size: clamp(1rem, 2.2vw, 1.2rem);
+            line-height: 1.7;
+        }
+
+        .realities-line-accent {
+            background: linear-gradient(180deg, var(--neon-orange) 0%, var(--neon-pink) 100%);
+            box-shadow: 0 0 10px rgba(255, 122, 0, 0.5);
+        }
+
+        .realities-levels {
+            display: grid;
+            gap: clamp(24px, 4vh, 32px);
+        }
+
+        @media (min-width: 1024px) {
+            .realities-levels {
+                grid-template-columns: repeat(3, 1fr);
+                gap: clamp(20px, 2.5vw, 28px);
+                align-items: start;
+            }
+        }
+
+        .reality-level {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .reality-level:hover {
+            border-color: rgba(255, 0, 110, 0.3);
+            box-shadow: 0 8px 32px rgba(255, 0, 110, 0.15);
+        }
+
+        .reality-level::before {
+            background: linear-gradient(90deg, transparent, var(--shimmer-pink), transparent);
+        }
+
+        .level-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: clamp(12px, 2vh, 16px);
+            gap: 12px;
+        }
+
+        .level-title {
+            font-size: clamp(1.2rem, 2.8vw, 1.5rem);
+            font-weight: 300;
+            margin: 0;
+            background: var(--gradient-pink-orange);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .level-description {
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: clamp(16px, 2.5vh, 20px);
+            line-height: 1.7;
+            font-size: clamp(1rem, 2.2vw, 1.2rem);
+        }
+
+        .level-language {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(6px, 1vh, 8px);
+            margin-top: auto;
+        }
+
+        .language-label {
+            font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .language-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .language-tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 2px 8px;
+            font-size: clamp(0.7rem, 1.4vw, 0.8rem);
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+            white-space: nowrap;
+        }
+
+        /* Next Steps Section */
+        #next-steps { 
+            background: linear-gradient(135deg, rgba(6, 255, 228, 0.05) 0%, rgba(131, 56, 236, 0.05) 100%);
+            align-items: flex-start;
+            min-height: auto;
+        }
+
+        .next-steps-title {
+            background: var(--gradient-three-color);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .next-steps-body {
+            display: grid;
+            gap: clamp(50px, 8vh, 100px);
+            font-size: clamp(1rem, 2.2vw, 1.2rem);
+            line-height: 1.7;
+        }
+
+        .next-steps-line-accent {
+            background: linear-gradient(180deg, var(--neon-cyan) 0%, var(--neon-purple) 100%);
+            box-shadow: 0 0 10px rgba(6, 255, 228, 0.5);
+        }
+
+        .service-item {
+            font-weight: 400;
+            color: var(--white);
+            white-space: nowrap;
+            display: inline-block;
+            margin: 0 2px;
+            font-size: 0.95em;
+            background: var(--gradient-cyan-blue), var(--gradient-purple-pink);
+            background-size: 100% 0.05em, 0 0.05em;
+            background-position: 100% 100%, 0 100%;
+            background-repeat: no-repeat;
+            transition: background-size 400ms;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .service-item:hover {
+            background-size: 0 0.1em, 100% 0.1em;
+        }
+
+        .next-steps-principles {
+            display: grid;
+            gap: clamp(20px, 3vh, 32px);
+        }
+
+        @media (min-width: 768px) {
+            .next-steps-principles {
+                grid-template-columns: repeat(2, 1fr);
+                gap: clamp(24px, 3.5vh, 40px);
+            }
+        }
+
+        .principle-card {
+            padding: clamp(14px, 2vh, 26px) clamp(24px, 4vh, 36px);
+        }
+
+        .principle-card:hover {
+            border-color: rgba(6, 255, 228, 0.3);
+            box-shadow: 0 8px 32px rgba(6, 255, 228, 0.15);
+        }
+
+        .principle-card::before {
+            background: linear-gradient(90deg, transparent, var(--shimmer-cyan), transparent);
+        }
+
+        .principle-card.expandable {
+            cursor: pointer;
+        }
+
+        .principle-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .expand-icon {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.5rem;
+            font-weight: 300;
+            transition: var(--transition-fast);
+            margin-left: 16px;
+            flex-shrink: 0;
+        }
+
+        .principle-card.expandable:hover .expand-icon {
+            color: rgba(6, 255, 228, 0.8);
+        }
+
+        .principle-card.expandable.expanded .expand-icon {
+            transform: rotate(45deg);
+            color: var(--neon-cyan);
+        }
+
+        .principle-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+        }
+
+        .principle-card.expandable.expanded .principle-content {
+            max-height: 300px;
+            opacity: 1;
+            margin-top: clamp(12px, 2vh, 18px);
+        }
+
+        .principle-title {
+            font-size: clamp(1.1rem, 2.4vw, 1.3rem);
+            font-weight: 300;
+            background: var(--gradient-cyan-blue);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.3;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        .investment-options {
+            display: grid;
+            gap: clamp(24px, 4vh, 40px);
+            margin-top: clamp(20px, 3vh, 40px);
+        }
+
+        @media (min-width: 1024px) {
+            .investment-options {
+                grid-template-columns: repeat(3, 1fr);
+                gap: clamp(20px, 2.5vw, 32px);
+                align-items: stretch;
+            }
+        }
+
+        .option-card {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            backdrop-filter: blur(30px);
+            padding: clamp(28px, 4.5vh, 40px);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .option-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            transition: left 0.8s ease;
+        }
+
+        .option-card.free::before { background: linear-gradient(90deg, transparent, rgba(6, 255, 228, 0.15), transparent); }
+        .option-card.hours::before { background: linear-gradient(90deg, transparent, rgba(58, 134, 255, 0.15), transparent); }
+        .option-card.extended::before { background: linear-gradient(90deg, transparent, rgba(131, 56, 236, 0.15), transparent); }
+
+        .option-card:hover::before { left: 100%; }
+        .option-card:hover { transform: translateY(-4px) scale(1.02); }
+
+        .option-card.free { border-color: rgba(6, 255, 228, 0.3); box-shadow: 0 0 30px rgba(6, 255, 228, 0.1); }
+        .option-card.hours { border-color: rgba(58, 134, 255, 0.3); box-shadow: 0 0 30px rgba(58, 134, 255, 0.1); }
+        .option-card.extended { border-color: rgba(131, 56, 236, 0.3); box-shadow: 0 0 30px rgba(131, 56, 236, 0.1); }
+
+        .option-card.free:hover { border-color: rgba(6, 255, 228, 0.5); box-shadow: 0 12px 40px rgba(6, 255, 228, 0.2); }
+        .option-card.hours:hover { border-color: rgba(58, 134, 255, 0.5); box-shadow: 0 12px 40px rgba(58, 134, 255, 0.2); }
+        .option-card.extended:hover { border-color: rgba(131, 56, 236, 0.5); box-shadow: 0 12px 40px rgba(131, 56, 236, 0.2); }
+
+        .option-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: clamp(16px, 2.5vh, 24px);
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .option-title {
+            font-size: clamp(1.4rem, 3vw, 1.8rem);
+            font-weight: 300;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .option-card.free .option-title { background: var(--gradient-cyan-blue); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .option-card.hours .option-title { background: var(--gradient-blue-purple); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .option-card.extended .option-title { background: var(--gradient-purple-pink); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+        .option-description {
+            margin-bottom: clamp(20px, 3vh, 28px);
+            flex-grow: 1;
+        }
+
+        .option-description p {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            margin-bottom: clamp(12px, 1.5vh, 16px);
+        }
+
+        .option-benefits {
+            margin-bottom: clamp(24px, 3vh, 32px);
+        }
+
+        .benefit-item {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: clamp(0.9rem, 1.8vw, 1rem);
+            line-height: 1.5;
+            margin-bottom: clamp(8px, 1vh, 12px);
+            position: relative;
+            padding-left: 16px;
+        }
+
+        .benefit-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+
+        .option-card.free .benefit-item::before { background: var(--neon-cyan); box-shadow: 0 0 8px rgba(6, 255, 228, 0.6); }
+        .option-card.hours .benefit-item::before { background: var(--neon-blue); box-shadow: 0 0 8px rgba(58, 134, 255, 0.6); }
+        .option-card.extended .benefit-item::before { background: var(--neon-purple); box-shadow: 0 0 8px rgba(131, 56, 236, 0.6); }
+
+        .option-cta {
+            padding: clamp(12px, 1.5vh, 16px) clamp(20px, 3vw, 32px);
+            font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+            font-weight: 400;
+            text-align: center;
+            margin-top: auto;
+            letter-spacing: 0.02em;
+        }
+
+        /* Bio Section */
+        #bio { 
+            background: linear-gradient(135deg, rgba(255, 122, 0, 0.05) 0%, rgba(255, 0, 110, 0.05) 100%);
+            align-items: flex-start;
+            min-height: auto;
+            padding-bottom: clamp(80px, 8vh, 140px);
+        }
+
+        .bio-content {
+            display: grid;
+            gap: clamp(40px, 6vh, 80px);
+            align-items: start;
+        }
+
+        @media (min-width: 1024px) {
+            .bio-content {
+                grid-template-columns: 280px 1fr;
+                gap: clamp(60px, 8vw, 120px);
+            }
+        }
+
+        .bio-portrait {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .portrait-frame {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            border-radius: 16px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(255, 122, 0, 0.1);
+        }
+
+        .portrait-frame::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, 
+                var(--neon-orange) 0%, 
+                var(--neon-pink) 25%, 
+                var(--neon-purple) 50%, 
+                var(--neon-pink) 75%, 
+                var(--neon-orange) 100%);
+            border-radius: 18px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            animation: border-flow 8s linear infinite;
+        }
+
+        @keyframes border-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .portrait-frame:hover::before { opacity: 0.6; }
+        .portrait-frame:hover {
+            transform: translateY(-4px) scale(1.02);
+            border-color: rgba(255, 122, 0, 0.3);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 60px rgba(255, 122, 0, 0.2);
+        }
+
+        .portrait-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(135deg, rgba(255, 122, 0, 0.2) 0%, rgba(255, 0, 110, 0.2) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .portrait-frame:hover .portrait-image { transform: scale(1.05); }
+
+        .linkedin-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: clamp(0.85rem, 1.6vw, 0.95rem);
+            font-weight: 300;
+            margin-top: clamp(16px, 2vh, 24px);
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            transition: var(--transition-fast);
+            position: relative;
+            z-index:10;
+            pointer-events:auto;
+        }
+
+        .linkedin-link:hover {
+            color: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 122, 0, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .linkedin-icon {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+            transition: var(--transition-fast);
+        }
+
+        .linkedin-link:hover .linkedin-icon {
+            fill: rgba(255, 255, 255, 0.9);
+            transform: scale(1.1);
+        }
+
+        .bio-text {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(24px, 4vh, 40px);
+        }
+
+        .bio-header {
+            background: linear-gradient(135deg, var(--neon-orange) 0%, var(--neon-pink) 50%, var(--neon-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0;
+
+        }
+
+        .bio-intro {
+            font-size: clamp(1.1rem, 2.4vw, 1.4rem);
+            font-weight: 300;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .bio-line-accent {
+            background: linear-gradient(180deg, var(--neon-orange) 0%, var(--neon-pink) 100%);
+            box-shadow: 0 0 10px rgba(255, 122, 0, 0.5);            
+        }
+
+        .company-name {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.95);
+            border: 1px solid var(--glass-border);
+            transition: var(--transition-fast);
+            white-space: nowrap;
+        }
+
+        .company-name:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .bio-expanded {
+            display: none;
+            margin-top: clamp(24px, 4vh, 40px);
+        }
+
+        .bio-expanded.active {
+            display: block;
+        }
+
+        .bio-expanded p {
+            margin-bottom: clamp(20px, 3vh, 32px);
+            font-size: clamp(1rem, 2.2vw, 1.2rem);
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .show-more-btn {
+            background: linear-gradient(135deg, var(--neon-orange) 0%, var(--neon-pink) 50%, var(--neon-purple) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            padding: clamp(12px, 1.5vh, 16px) clamp(24px, 4vw, 36px);
+            border-radius: 50px;
+            font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: clamp(20px, 3vh, 32px);
+            letter-spacing: 0.02em;
+            align-self: flex-start;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .show-more-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .show-more-btn:hover::before {
+            left: 100%;
+        }
+
+        .show-more-btn:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 122, 0, 0.4);
+        }
+
+        .show-more-btn.expanded {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .show-more-btn.expanded:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--white);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .copyright-text {
+            text-align: center;
+            font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: clamp(30px, 4vh, 50px);
+            padding-top: clamp(20px, 3vh, 30px);
+            letter-spacing: 0.02em;
+        }
+
+        /* Progress Footer */
+        .progress-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid var(--glass-border);
+            padding: clamp(16px, 2vh, 24px) clamp(20px, 5vw, 60px);
+            z-index: 1000;
+        }
+
+        .progress-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            margin-bottom: clamp(12px, 1.5vh, 20px);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 100%);
+            animation: shimmer 2s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-three-color);
+            border-radius: 2px;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 0%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: progress-shine 2s ease-in-out infinite;
+        }
+
+        @keyframes progress-shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .progress-steps {
+            overflow: hidden;
+            position: relative;
+            height: clamp(24px, 3vh, 32px);
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .steps-container {
+            display: flex;
+            align-items: center;
+            gap: clamp(16px, 3vw, 32px);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+            min-width: 100%;
+        }
+
+        .step {
+            font-size: clamp(12px, 1.5vw, 14px);
+            color: rgba(255, 255, 255, 0.5);
+            transition: var(--transition-smooth);
+            white-space: nowrap;
+            cursor: pointer;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .step:hover {
+            color: rgba(255, 255, 255, 0.8);
+            transform: translateY(-1px);
+        }
+
+        .step.active {
+            color: var(--white);
+            font-size: clamp(13px, 1.6vw, 15px);
+            font-weight: 400;
+            text-shadow: 0 0 20px rgba(58, 134, 255, 0.5);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1023px) {
+            .bio-portrait { margin-bottom: clamp(20px, 4vh, 40px); }
+            .portrait-frame { width: 240px; height: 240px; }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar { padding: 16px 20px; }
+            .hero-section { padding: 130px 20px 50px; min-height: 85vh; }
+            .hero-message { line-height: 1.2; }
+            .progress-footer { padding: 12px 20px; }
+            .steps-container { gap: 20px; }
+            .section { padding: 60px 20px 40px; min-height: auto; align-items: flex-start; }
+            .pattern-content { padding: 30px 24px; width: 95vw; max-height: 85vh; }
+            .text-with-accent { padding-left: 14px; }
+            .next-steps-principles, .investment-options { gap: 24px; }
+            .option-card, .principle-card { padding: 20px; }
+            .bio-content { gap: 30px; }
+            .portrait-frame { width: 200px; height: 200px; }
+        }
+        
+        @media (max-width: 480px) {
+            .top-bar { padding: 12px 16px; }
+            .hero-section { padding: 110px 16px 40px; min-height: 80vh; }
+            .progress-footer { padding: 10px 16px; }
+            .steps-container { gap: 16px; }
+            .section { padding: 50px 16px 30px; }
+            .pattern-content { padding: 24px 20px; }
+            .text-with-accent { padding-left: 12px; }
+            .glass-card, .option-card, .principle-card { padding: 16px; }
+            .next-steps-principles, .investment-options { gap: 20px; }
+            .bio-content { gap: 24px; }
+            .portrait-frame { width: 180px; height: 180px; }
+        }
+
+        /* Smooth scroll behavior */
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body>
+    <!-- SVG Gradients Definition -->
+    <svg style="position: absolute; width: 0; height: 0; pointer-events: none;">
+        <defs>
+            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#06FFE4;stop-opacity:1" />
+                <stop offset="50%" style="stop-color:#3A86FF;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#8338EC;stop-opacity:1" />
+            </linearGradient>
+        </defs>
+    </svg>
+
+    <header class="header">
+        <div class="top-bar">
+            <div class="logo-container">
+                <svg class="logo-svg" viewBox="0 0 313 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_31_5)">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M34.4873 19.7518H23.2836L24.9137 16.9299H32.8574L34.4875 19.7518H34.4873ZM28.1734 30.6815H24.9135L19.0741 20.573H22.334L28.1734 30.6815ZM3.63015 17.3404L5.2603 20.1623L3.63015 22.9842L2 20.1623L3.63015 17.3404ZM22.571 6.41074L24.2011 9.23218L18.3621 19.3407L16.7319 16.5188L22.571 6.41074ZM12.2854 24.2169H15.5453L9.94355 33.9143L8.3134 31.0928L12.2854 24.2169ZM24.9137 23.3951L23.2836 20.5733H34.4873L32.8572 23.3951H24.9135H24.9137ZM28.1736 8.82186H24.9137L23.2836 6H26.5435L28.1736 8.82186ZM22.3342 19.7526H19.0743L24.9137 9.64412H28.1736L22.3342 19.7526ZM23.2836 34.3259L24.9138 31.504H28.1736L26.5435 34.3259H23.2836ZM17.8877 12.8762L16.2579 15.6981L10.6557 6.00021H13.9159L17.8877 12.8762ZM10.6557 34.3259L16.2579 24.628L17.8877 27.4499L13.916 34.3259H10.6557ZM16.7324 23.8067L18.3625 20.9849L24.2016 31.0934L22.5714 33.9148L16.7324 23.8067ZM9.94389 6.41139L15.5457 16.1088H12.2858L8.31374 9.23283L9.94389 6.41139ZM4.34213 23.396L5.97185 20.5741H17.6504L16.0203 23.396H4.34277H4.34213ZM16.0197 16.931L17.6498 19.7528H5.97121L4.34149 16.931H16.019H16.0197Z" fill="white"/>
+                        <path d="M44.1183 14.032H38.9823V10.864H53.0224V14.032H47.8863V28H44.1183V14.032Z" fill="white"/>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_31_5">
+                            <rect width="313" height="37" fill="white"/>
+                        </clipPath>
+                    </defs>
+                </svg>
+            </div>
+            <a href="contact.html" class="btn-primary">Contact</a>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-message active" id="heroMessage">
+            Change is constant, but <span class="highlight" data-color="1">critical thinking is timeless.</span><span class="second-line">We help data organizations break the cycle of magical thinking.</span>
+        </div>
+    </section>
+
+    <!-- Communication Landscape -->
+    <div id="communication-landscape" class="section">Communication Landscape</div>
+    
+    <div id="everyone-is-selling-magic" class="section">
+        <div class="container">
+            <div class="grid-background grid-background--pink"></div>
+            <div class="section-content">
+                <h2 class="section-title magic-title">
+                    <span>Everyone's</span>
+                    <span class="highlight">Selling Magic</span>
+                </h2>
+                
+                <div class="magic-body">
+                    <div class="text-with-accent">
+                        <div class="line-accent magic-line-accent"></div>
+                        <p>The analytics market is drowning in promises. Organizations convince themselves they have a technical problem when they actually have a communication problem. Since technology is an accelerant, applying it to the wrong foundation creates bigger issues faster. Sometimes what's easiest to buy is the hardest to make effective, and the hardest to sell is an honest understanding of the situation.</p>
+                    </div>
+                    
+                    <div class="glass-card magic-solution">
+                        <h3 style="font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 300; margin-bottom: clamp(20px, 3vh, 35px);">What You Actually Need</h3>
+                        
+                        <p>You need someone who's seen your problems before in different contexts and can translate between industries to recognize patterns others miss.</p>
+                        
+                        <p>Since every change affects everything else in your organization and each new tool or process affects your organization's operating rhythm, these interconnections must be understood and managed. This means working alongside your people, not around them and having difficult conversations early rather than surprises later.</p>
+                        
+                        <p>Technology choices should fit your actual needs, not theoretical ideals, building on existing investments rather than overcorrecting by trying to replace everything.</p>
+                        
+                        <p>You deserve strategic assessment even when it's uncomfortable. Most importantly, you need someone who recognizes when your analytics problems are organizational patterns and treats them accordingly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="patterns" class="section">
+        <div class="container">
+            <div class="grid-background grid-background--blue"></div>
+            <div class="section-content">
+                <h2 class="section-title">Patterns</h2>
+                <p class="patterns-description">
+                    Organizational pressure can produce archetypical behavior and dynamics creating uncomfortable patterns.
+                </p>
+                <p class="patterns-description">
+                    The real complexity isn't just in identifying them but in understanding how they compound and influence each other, surfacing emergent dysfunction that no framework can fully capture or resolve. Each pattern represents a system interaction rather than an individual failing. Not every pattern has a "fix", but recognizing them allows organizations to manage trade-offs.
+                </p>
+                
+                <div class="pattern-category">
+                    <h3 class="category-title executive">Executive</h3>
+                    <div class="patterns-list">
+                        <div class="pattern-pill executive" data-pattern="attribution-crisis">Attribution Crisis</div>
+                        <div class="pattern-pill executive" data-pattern="constant-firefighting">Constant Firefighting</div>
+                        <div class="pattern-pill executive" data-pattern="organizational-mis-structure">Organizational Mis-structure</div>
+                        <div class="pattern-pill executive" data-pattern="organizational-expedience">Organizational Expedience</div>
+                        <div class="pattern-pill executive" data-pattern="shallow-consensus">Shallow Consensus</div>
+                        <div class="pattern-pill executive" data-pattern="leadership-preferences">Leadership Preferences</div>                          
+                    </div>
+                </div>
+                
+                <div class="pattern-category">
+                    <h3 class="category-title business">The Business</h3>
+                    <div class="patterns-list">
+                        <div class="pattern-pill business" data-pattern="dis-integrated-systems">Dis-integrated Systems</div>
+                        <div class="pattern-pill business" data-pattern="learned-helplessness">Learned Helplessness</div>
+                        <div class="pattern-pill business" data-pattern="identity-crisis">Identity Crisis</div>
+                        <div class="pattern-pill business" data-pattern="chain-of-failure">Chain of Failure</div>
+                        <div class="pattern-pill business" data-pattern="universalization">Universalization</div>
+                    </div>
+                </div>
+                
+                <div class="pattern-category">
+                    <h3 class="category-title analytics">Analytics Team</h3>
+                    <div class="patterns-list">
+                        <div class="pattern-pill analytics" data-pattern="artifact-factory">Artifact Factory</div>
+                        <div class="pattern-pill analytics" data-pattern="good-intention-hodgepodge">Good Intention Hodgepodge</div>
+                        <div class="pattern-pill analytics" data-pattern="fragmented-context">Fragmented Context</div>
+                        <div class="pattern-pill analytics" data-pattern="disintermediation-paradox">Disintermediation Paradox</div>
+                        <div class="pattern-pill analytics" data-pattern="passion-tax">The Passion Tax</div>
+                        <div class="pattern-pill analytics" data-pattern="internal-product-fallacy">Internal Product Fallacy</div>                        
+                        <div class="pattern-pill analytics" data-pattern="innovation-treadmill">Innovation Treadmill</div>
+                        <div class="pattern-pill analytics" data-pattern="ai-magic">On Hold Pending AI Magic</div>
+                        <div class="pattern-pill analytics" data-pattern="early-adopter">Early Adopter, Premature Optimizer</div>
+                        <div class="pattern-pill analytics" data-pattern="lawyerfication">Lawyerfication</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pattern Modal -->
+    <div class="overlay" id="overlay"></div>
+    <div class="pattern-content" id="pattern-content">
+        <div class="modal-controls">
+            <button class="close-btn" id="close-btn">×</button>
+        </div>
+        <h3 id="pattern-title"></h3>
+        <p id="pattern-description"></p>
+        <button class="next-pattern-btn" id="next-pattern-btn">Next Pattern →</button>
+    </div>
+
+    <!-- Different Realities -->
+    <div id="different-realities" class="section">
+        <div class="container">
+            <div class="grid-background grid-background--orange"></div>
+            <div class="section-content">
+                <h2 class="section-title realities-title">Different Realities</h2>
+                
+                <div class="realities-body">
+                    <div class="text-with-accent">
+                        <div class="line-accent realities-line-accent"></div>
+                        <p>Every level operates in its own world, subjected to forces local to their position. Each has different subcultures, languages, values, and timescales. What appears illogical at one level often represents best practices at another.</p>
+                        
+                        <p>To understand the reality that people are feeling you have to listen and see how the system works before introducing changes. Translating language and priorities between different groups requires recognizing that each level operates with different optics and reflexes.</p>
+                        
+                        <p>Hostility intensifies as people get closer in status hierarchy where energy is wasted on competition rather than collaboration. Each level transfers its inefficiencies to the next, creating cascading dysfunction. Business intelligence becomes a mirror for the culture: fragmented, politicized, and competitive.</p>
+                        
+                        <p>Where data is supposed to be the function that brings a dose of reality when people start making up stories, emotions like fear and greed still influence interpretations at every level. Understanding these different realities requires seeing the whole system.</p>
+                    </div>
+                    
+                    <div class="realities-levels">
+                        <div class="glass-card reality-level">
+                            <div class="level-header">
+                                <h3 class="level-title">Executives</h3>
+                            </div>
+                            <p class="level-description">Are perceived to have the power to fix problems, but lack granularity of information they receive due to their broad scope, insulating layers, and competing priorities.</p>
+                            <div class="level-language">
+                                <span class="language-label">Language:</span>
+                                <div class="language-tags">
+                                    <span class="language-tag">ROI</span>
+                                    <span class="language-tag">market share</span>
+                                    <span class="language-tag">span of control</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-card reality-level">
+                            <div class="level-header">
+                                <h3 class="level-title">Managers</h3>
+                            </div>
+                            <p class="level-description">Must code messages into budget requests and justifications, optimizing for leadership attention as much as team performance.</p>
+                            <div class="level-language">
+                                <span class="language-label">Language:</span>
+                                <div class="language-tags">
+                                    <span class="language-tag">budgets</span>
+                                    <span class="language-tag">escalations</span>
+                                    <span class="language-tag">visibility</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-card reality-level">
+                            <div class="level-header">
+                                <h3 class="level-title">Individual Contributors</h3>
+                            </div>
+                            <p class="level-description">Have the details about what's broken but lack an influence network to advocate. In the absence of data, those distributed in the hierarchy operate on belief.</p>
+                            <div class="level-language">
+                                <span class="language-label">Language:</span>
+                                <div class="language-tags">
+                                    <span class="language-tag">edge cases</span>
+                                    <span class="language-tag">tech debt</span>
+                                    <span class="language-tag">promotion path</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Next Steps Section -->
+    <div id="next-steps" class="section">
+        <div class="container">
+            <div class="grid-background grid-background--cyan"></div>
+            <div class="section-content">
+                <h2 class="section-title next-steps-title">Next Steps</h2>
+                
+                <div class="next-steps-body">
+                    <div class="text-with-accent">
+                        <div class="line-accent next-steps-line-accent"></div>
+                        <p>Don't buy a solution before you better understand the problem. If you think you already know exactly what's wrong and just need help executing it, you have a vested interest in a solution path and we're probably not the right partner.</p>
+                        
+                        <p>What we actually do is bridge the gap between your data investments and business operations through <a href="contact.html" class="service-item">Information Architecture</a>, <a href="contact.html" class="service-item">Data Visualization</a>, <a href="contact.html" class="service-item">Design</a>, <a href="contact.html" class="service-item">Workshop Facilitation</a>, <a href="contact.html" class="service-item">Training</a>, and <a href="contact.html" class="service-item">Fractional Leadership</a>. We're technology platform agnostic and work with your existing infrastructure. Even if you don't have budget authorization yet, we can help you develop a plan to present to your leadership team.</p>
+                    </div>
+                    
+                    <div class="next-steps-principles">
+                        <div class="principle-card glass-card expandable">
+                            <div class="principle-header">
+                                <h3 class="principle-title">Why we don't lead with packages or assessments</h3>
+                                <span class="expand-icon">+</span>
+                            </div>
+                            <div class="principle-content">
+                                <p>Standard processes may feel reassuring because they imply confidence in solving your problem, but any expert needs to understand your specific complexity before prescribing an approach. Templated diagnostics built for a different economic environment, workplace culture, and technology ecosystem can introduce unintended consequences. They impose a false linearity on what is actually an iterative, context-dependent process.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="principle-card glass-card expandable">
+                            <div class="principle-header">
+                                <h3 class="principle-title">Why you won't see detailed case studies</h3>
+                                <span class="expand-icon">+</span>
+                            </div>
+                            <div class="principle-content">
+                                <p>High impact analytics work requires deep confidentiality. We don't betray client trust by turning their challenges into marketing materials. Many "success stories" in this space are cherry-picked anecdotes without reliable metrics.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="principle-card glass-card expandable">
+                            <div class="principle-header">
+                                <h3 class="principle-title">About budgets</h3>
+                                <span class="expand-icon">+</span>
+                            </div>
+                            <div class="principle-content">
+                                <p>They're always a constraint, but don't let that discourage you. We can be flexible with enterprise procurement approaches. For independent consultants and individuals seeking mentoring, we offer income-based pricing to make strategic guidance available for those that need it most. Remember: there is no "not paying for design", you will still pay for bad design as a consequence.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="principle-card glass-card expandable">
+                            <div class="principle-header">
+                                <h3 class="principle-title">Why start now</h3>
+                                <span class="expand-icon">+</span>
+                            </div>
+                            <div class="principle-content">
+                                <p>There's an opportunity cost to delaying action, but hesitation is understandable. Skipping steps to rush ahead towards false economies or to avoid hard conversations is how the wrong methods are applied and value gets lost. That's why we make the first step accessible to explore possibilities and fit. We'll help you listen differently to what your organization is really telling you.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="investment-options">
+                        <div class="option-card free">
+                            <div class="option-header">
+                                <h3 class="option-title">Free</h3>
+                            </div>
+                            <div class="option-description">
+                                <p>A phone or video call to understand your environment. No obligation or NDAs required.</p>
+                            </div>
+                            <div class="option-benefits">
+                                <div class="benefit-item">Get clarity on your situation</div>
+                                <div class="benefit-item">Validate your challenges from an outside perspective</div>
+                                <div class="benefit-item">Compare your options</div>
+                            </div>
+                            <a href="contact.html" class="btn-primary option-cta">Contact</a>
+                        </div>
+                        
+                        <div class="option-card hours">
+                            <div class="option-header">
+                                <h3 class="option-title">Hours</h3>
+                            </div>
+                            <div class="option-description">
+                                <p>Focused one-on-one time to navigate specific issues, plan your approach, or support implementation.</p>
+                            </div>
+                            <div class="option-benefits">
+                                <div class="benefit-item">Targeted problem-solving</div>
+                                <div class="benefit-item">Individual contributors seeking expert perspectives</div>
+                                <div class="benefit-item">Leaders who need a strategic partner</div>
+                            </div>
+                        </div>
+                        
+                        <div class="option-card extended">
+                            <div class="option-header">
+                                <h3 class="option-title">Weeks/Months</h3>
+                            </div>
+                            <div class="option-description">
+                                <p>Structured engagements with organizational priority and access to leadership.</p>
+                            </div>
+                            <div class="option-benefits">
+                                <div class="benefit-item">Platform design or redesign projects</div>
+                                <div class="benefit-item">Change initiatives requiring sustained guidance</div>
+                                <div class="benefit-item">Teams with execution capability who need strategic direction</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="bio" class="section">
+        <div class="container">
+            <div class="grid-background grid-background--orange"></div>
+            <div class="bio-content">
+                <div class="bio-portrait">
+                    <div class="portrait-frame">
+                        <div class="portrait-image">
+                            Photo Coming Soon
+                        </div>
+                    </div>
+                    <a href="https://www.linkedin.com/in/ryangensel/" class="linkedin-link" target="_blank" rel="noopener noreferrer">
+                        <svg class="linkedin-icon" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                        LinkedIn
+                    </a>
+                </div>
+                
+                <div class="bio-text">
+                    <h2 class="section-title bio-header">Ryan Gensel</h2>
+                    
+                    <div class="bio-content-wrapper text-with-accent">
+                        <div class="line-accent bio-line-accent"></div>
+                        
+                        <div class="bio-intro">
+                            As an analytics leader within <span class="company-name">Apple</span>, consultant to hundreds of organizations (including <span class="company-name">American Express</span>, <span class="company-name">Intel</span>, <span class="company-name">NASA</span>), co-inventor of a patent-pending business intelligence platform, contributing designer to the "Big Book of Dashboards", and Tableau Expert, Ryan leverages multi-disciplinary experience to design and align systems that produce business impact.
+                        </div>
+                        
+                        <div class="bio-expanded" id="bio-expanded">
+                            <p>Ryan is a twenty five year veteran of the technology industry studying the patterns in a changing workforce and designing adapters to optimize the systems that connect people, process, and technology. Fluent in both organizational language and applied psychology, he has been in the executive conference room shaping decisions and a force in the implementation, bridging the critical transition from theory to application.</p>
+                            
+                            <p>Ryan has guided hundreds of organizations through their maturity journey, helping them see that change requires an integration of inside and outside forces. His approach recognizes that competence isn't about having all the answers but about improvising from a richer set of references, understanding not just how to solve problems, but why they existed in the first place. Through years of practice working with stakeholders to externalize their mental models, Ryan focuses on making hidden implicit assumptions visible.</p>
+                        </div>
+                        
+                        <button class="show-more-btn" id="show-more-btn">Show More</button>
+                    </div>
+                </div>
+
+            </div>
+            <p class="copyright-text">© 2025 Thinking Interface Design. All rights reserved.</p>
+        </div>
+    </div>
+
+    <!-- Progress Footer -->
+    <div class="progress-footer">
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <div class="progress-steps">
+                <div class="steps-container">
+                    <div class="step" data-section="communication-landscape">Communication Landscape</div>
+                    <div class="step" data-section="everyone-is-selling-magic">Everyone's Selling Magic</div>
+                    <div class="step" data-section="patterns">Patterns</div>
+                    <div class="step" data-section="different-realities">Different Realities</div>
+                    <div class="step" data-section="next-steps">Next Steps</div>
+                    <div class="step" data-section="bio">Bio</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Cached DOM elements and consolidated state
+        const elements = {
+            heroMessage: document.getElementById('heroMessage'),
+            logoContainer: document.querySelector('.logo-container'),
+            showMoreBtn: document.getElementById('show-more-btn'),
+            bioExpanded: document.getElementById('bio-expanded'),
+            overlay: document.getElementById('overlay'),
+            patternContent: document.getElementById('pattern-content'),
+            closeBtn: document.getElementById('close-btn'),
+            nextPatternBtn: document.getElementById('next-pattern-btn'),
+            patternTitle: document.getElementById('pattern-title'),
+            patternDescription: document.getElementById('pattern-description'),
+            progressFill: document.querySelector('.progress-fill'),
+            stepsContainer: document.querySelector('.steps-container'),
+            progressSteps: document.querySelector('.progress-steps'),
+            expandableCards: document.querySelectorAll('.principle-card.expandable'),
+            patternPills: document.querySelectorAll('.pattern-pill'),
+            steps: document.querySelectorAll('.step')
+        };
+
+        // App state
+        const state = {
+            currentMessageIndex: 0,
+            isExpanded: false,
+            currentPatternIndex: -1,
+            isScrolling: false
+        };
+
+        // Constants
+        const SECTIONS = ['communication-landscape', 'everyone-is-selling-magic', 'patterns', 'different-realities', 'next-steps', 'bio'];
+        
+        const MESSAGES = [
+            { main: 'Change is constant, but <span class="highlight" data-color="1">critical thinking is timeless.</span><span class="second-line">We help data organizations break the cycle of magical thinking.</span>' },
+            { main: 'Everyone\'s selling data governance, <span class="highlight" data-color="2">nobody\'s asking if it works.</span><span class="second-line">We help data teams align technology to how humans actually behave.</span>' },
+            { main: 'New technology will always be hyped, but <span class="highlight" data-color="3">critical thinking is timeless.</span><span class="second-line">We help data organizations see through promises to operational reality.</span>' }
+        ];
+
+        const COLOR_SETS = [
+            { gradient: 'linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-blue) 50%, var(--neon-purple) 100%)' },
+            { gradient: 'linear-gradient(135deg, var(--neon-blue) 0%, var(--neon-purple) 50%, var(--neon-pink) 100%)' },
+            { gradient: 'linear-gradient(135deg, var(--neon-purple) 0%, var(--neon-pink) 50%, var(--neon-orange) 100%)' }
+        ];
+
+        const ALL_PATTERNS = [
+            'attribution-crisis', 'constant-firefighting', 'organizational-mis-structure', 'organizational-expedience', 'shallow-consensus', 'leadership-preferences',
+            'dis-integrated-systems', 'learned-helplessness', 'identity-crisis', 'chain-of-failure', 'universalization',
+            'artifact-factory', 'good-intention-hodgepodge', 'fragmented-context', 'disintermediation-paradox', 'passion-tax', 'internal-product-fallacy',
+            'innovation-treadmill', 'ai-magic', 'early-adopter', 'lawyerfication'
+        ];
+
+        const PATTERN_DATA = {
+            'leadership-preferences': { title: 'Leadership Preferences', description: 'Every executive wants their special format, their familiar ritual of information consumption. Teams waste hours reformatting the same information for different audiences, creating pre-meeting cycles where conflicting feedback isn\'t about the data but about presentation preferences. Authority misalignment from imperfect translation creates impossible expectations where teams must serve multiple leaders with conflicting demands.' },
+            'attribution-crisis': { title: 'Attribution Crisis', description: 'Teams optimize for executive visibility instead of business outcomes because collaborative work makes individual impact invisible. Everyone measures and presents activity rather than results, since tracking impact across collaborative systems proves nearly impossible. Politics fills this measurement vacuum with opportunistic narratives about who deserves credit, creating zero-sum games where announcing success matters more than delivering it.' },
+            'constant-firefighting': { title: 'Constant Firefighting', description: 'Every request becomes urgent, creating more work but not better decisions. Teams can\'t optimize utilization when priorities shift daily, creating a backlog that grows longer as interruptions become more frequent. The whiplash between different timescales and the gap between expectations and reality ensures that strategic work never happens because tactical emergencies consume all available capacity.' },
+            'organizational-expedience': { title: 'Organizational Expedience', description: 'Getting things done requires navigating between official processes and informal power structures. Teams learn that creating visible pain for other departments justifies headcount and budget better than quietly preventing problems. This weaponization of dysfunction destroys working-level collaboration. The technical problems become secondary to the psychology problems, and the psychology problems don\'t change because the people aren\'t incentivized to change.' },
+            'organizational-mis-structure': { title: 'Organizational Mis-structure', description: 'Analytics gets buried under departments with different agendas, inheriting goals and policy that make no sense for data work. Without direct leadership access, data teams become order-takers instead of decision partners. Influence depends entirely on whoever you report through. Career paths hit dead ends, pushing good people to either compromise their values or leave.' },
+            'shallow-consensus': { title: 'Shallow Consensus', description: 'Everyone nods in meetings because disagreement requires understanding what was actually proposed. Complex problems get simplified into talking points that mean different things to different people. Real decisions happen in side conversations with context that never reaches the broader team. Each management layer adds their own interpretation until the work being done has no connection to what executives think they approved.' },
+            'dis-integrated-systems': { title: 'Dis-integrated Systems', description: 'Teams develop different definitions for the same metric, turning meetings into negotiations about whose data to trust. Shadow systems multiply as teams lose faith in official sources, creating a self-reinforcing cycle of fragmentation. Budget standoffs prevent integration while everyone pays the hidden cost of reconciliation work that happens in spreadsheets and slide decks across the organization.' },
+            'identity-crisis': { title: 'Identity Crisis', description: 'People define their worth through project visibility and meeting invites rather than actual impact. Instead of enabling others, job security comes from defensive jargon and gatekeeping knowledge. The disconnect deepens when specialists report to generalists who can only evaluate performance through political perception, resulting in a culture that rewards visibility, compliance, and organizational maneuvering.' },
+            'chain-of-failure': { title: 'Chain of Failure', description: 'People inherit broken systems but stay quiet, because raising issues isn\'t politically convenient. Those who speak up watch their concerns get weaponized for personal agendas. When problems occur, blame cascades in the most convenient direction. Lacking historical context or nuanced understanding of workflows, initiatives are created to transfer power from one team to another.' },
+            'learned-helplessness': { title: 'Learned Helplessness', description: '"That\'s just how things work here" becomes the response to every suggestion. The organization\'s immune system resists new ideas as threats to established power. Those protecting broken systems outnumber those trying to fix them. The gap between what people say in meetings and private conversations reveals the real culture. New team members quickly learn which problems to ignore and which people to avoid challenging.' },
+            'universalization': { title: 'Universalization', description: 'Organizations assume their problems have standard solutions or that familiar approaches will work everywhere. Coalitions form around "best practices" without understanding the specific context that made them successful. Scale changes everything, but organizations apply enterprise tactics to small team problems. The demand for uniformity sacrifices team effectiveness for administrative convenience.' },
+            'fragmented-context': { title: 'Fragmented Context', description: 'Technical teams lack business context by operational design while business teams remain detached from the reality of technical constraints. Critical information stays compartmentalized at the "right level," creating an elaborate game of telephone where meaning degrades with each translation. Each side becomes convinced the other "doesn\'t get it," building sophisticated layers of workarounds instead of addressing the fundamental communication breakdown.' },
+            'disintermediation-paradox': { title: 'Disintermediation Paradox', description: 'Data teams restrict access to maintain relevance while business units build shadow analytics in frustration. The fear of being bypassed creates defensive behaviors that guarantee divisive friction. Analytics teams try to position themselves as thought partners, but the business team withholds sharing anything strategic enough to be considered "business intelligence".' },
+            'innovation-treadmill': { title: 'Innovation Treadmill', description: 'Legacy debt compounds while migration costs grow, and new platforms promise salvation from problems they\'ll eventually recreate. The same reports get rebuilt in each new tool, consuming resources without adding capability. Teams chase technical solutions to organizational problems, believing the next version will somehow fix broken processes and unclear accountability.' },
+            'ai-magic': { title: 'On Hold Pending AI Magic', description: 'Organizations find themselves paralyzed between waves of technology. Too early to adopt, too late to ignore completely, everyone waits for others to prove what\'s safe. Leadership vacillates between the twin fears of missing out and the fear of investment regret, creating decision paralysis that prevents both optimization and expectation management.' },
+            'passion-tax': { title: 'The Passion Tax', description: 'Caring becomes an exploitable weakness in environments that reward political maneuvering over impact. Self-promotion feels antithetical to the work, yet remains required for influence and resources. The most dedicated contributors burn out from overdelivering while those who manage perception advance through the organization.' },
+            'good-intention-hodgepodge': { title: 'Good Intention Hodgepodge', description: 'Well-meaning improvements layer upon each other, creating complexity that exceeds any individual\'s ability to understand or maintain. In environments where you can\'t change things, the only alternative is to create independent, but redundant systems. The cure becomes worse than the disease as coordination overhead consumes more resources than the original inefficiency.' },
+            'artifact-factory': { title: 'Artifact Factory', description: 'We are not in the business of manufacturing reports or slide decks, we are in the business of moving ideas into the minds of people. However, entire departments run on inefficiencies that, if solved, would eliminate roles. Admitting the analytics approach isn\'t working means admitting they\'ve just been going though the motions, making suboptimal decisions, which threatens their sense of competence.' },
+            'internal-product-fallacy': { title: 'Internal Product Fallacy', description: 'Companies design for hypothetical users from distorted descriptions given second-hand by a proxy or hyper personalizing to leaders whose idiosyncrasies become expensive technical debt. Designers remain insulated from actual users by hierarchy, receiving feedback filtered through each layer\'s agenda. Internal teams mimic consumer product language while exploiting monopoly positions, since captive audiences lack alternatives and gain leverage only by committing budgets large enough to matter politically.' },
+            'early-adopter': { title: 'Early Adopter, Premature Optimizer', description: 'Organizations adopt emerging technology before it stabilizes, accumulating technical debt faster than value. Early optimization locks teams into patterns designed for problems that no longer exist. The middleware connecting old decisions to new realities eventually consumes more resources than it saves. Early adopters pay twice, once to implement, again to migrate, while habits formed around legacy limitations persist for years.' },
+            'lawyerfication': { title: 'Lawyerfication', description: 'Requirements become weapons to deflect responsibility instead of opportunities for collaboration. The language grows increasingly legalistic as each department tries to transfer risk to others, creating impossible webs of interdependency where nobody can move without multiple sign-offs. Every interaction requires documentation trails that transform colleagues into potential litigants in disputes that haven\'t happened yet.' }
+        };
+
+        // Utility functions
+        function updateColors(colorIndex) {
+            const colorSet = COLOR_SETS[colorIndex - 1];
+            if (!colorSet) return;
+            
+            const contactBtn = document.querySelector('.btn-primary');
+            const highlight = elements.heroMessage?.querySelector('.highlight');
+            
+            if (contactBtn) contactBtn.style.background = colorSet.gradient;
+            if (highlight) {
+                highlight.style.background = colorSet.gradient;
+                highlight.style.webkitBackgroundClip = 'text';
+                highlight.style.webkitTextFillColor = 'transparent';
+                highlight.style.backgroundClip = 'text';
+            }
+            if (elements.progressFill) elements.progressFill.style.background = colorSet.gradient;
+        }
+
+        function rotateMessage() {
+            if (!elements.heroMessage) return;
+            
+            elements.heroMessage.classList.remove('active');
+            
+            setTimeout(() => {
+                state.currentMessageIndex = (state.currentMessageIndex + 1) % MESSAGES.length;
+                const nextMessage = MESSAGES[state.currentMessageIndex];
+                
+                elements.heroMessage.innerHTML = nextMessage.main;
+                
+                const highlight = elements.heroMessage.querySelector('.highlight');
+                if (highlight) {
+                    const colorIndex = parseInt(highlight.getAttribute('data-color'));
+                    if (!isNaN(colorIndex)) updateColors(colorIndex);
+                }
+                
+                setTimeout(() => elements.heroMessage.classList.add('active'), 100);
+            }, 600);
+        }
+
+        // Pattern modal functions
+        function openPattern(patternKey) {
+            const data = PATTERN_DATA[patternKey];
+            if (!data) return;
+
+            state.currentPatternIndex = ALL_PATTERNS.indexOf(patternKey);
+            elements.patternTitle.textContent = data.title;
+            elements.patternDescription.textContent = data.description;
+            
+            const pill = document.querySelector(`[data-pattern="${patternKey}"]`);
+            const category = pill.classList.contains('executive') ? 'executive' : 
+                           pill.classList.contains('business') ? 'business' : 'analytics';
+            
+            elements.patternContent.className = `pattern-content ${category} active`;
+            elements.overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            elements.patternPills.forEach(pill => {
+                pill.classList.remove('selected');
+                if (pill.dataset.pattern === patternKey) pill.classList.add('selected');
+            });
+        }
+
+        function nextPattern() {
+            if (state.currentPatternIndex >= 0) {
+                const nextIndex = (state.currentPatternIndex + 1) % ALL_PATTERNS.length;
+                const nextPatternKey = ALL_PATTERNS[nextIndex];
+                openPattern(nextPatternKey);
+            }
+        }
+
+        function closePattern() {
+            elements.overlay.classList.remove('active');
+            elements.patternContent.classList.remove('active');
+            document.body.style.overflow = '';
+            elements.patternPills.forEach(pill => pill.classList.remove('selected'));
+        }
+
+        // Progress tracking
+        function updateProgress() {
+            const firstSection = document.getElementById('communication-landscape');
+            const lastSection = document.getElementById('bio');
+            if (!firstSection || !lastSection) return;
+
+            const scrollTop = window.pageYOffset;
+            const windowHeight = window.innerHeight;
+            const firstSectionTop = firstSection.offsetTop;
+            const firstSectionBottom = firstSection.offsetTop + firstSection.offsetHeight;
+            
+            if (scrollTop + windowHeight < firstSectionTop) {
+                elements.progressFill.style.width = '0%';
+                elements.stepsContainer.style.transform = 'translateX(0px)';
+                elements.steps.forEach(step => step.classList.remove('active'));
+                return;
+            }
+
+            let currentSectionIndex = 0;
+            let maxVisibleArea = 0;
+
+            SECTIONS.forEach((sectionId, index) => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    const rect = section.getBoundingClientRect();
+                    const visibleTop = Math.max(0, rect.top);
+                    const visibleBottom = Math.min(windowHeight, rect.bottom);
+                    const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+                    
+                    if (visibleHeight > maxVisibleArea) {
+                        maxVisibleArea = visibleHeight;
+                        currentSectionIndex = index;
+                    }
+                }
+            });
+
+            const lastSectionBottom = lastSection.offsetTop + lastSection.offsetHeight;
+            const progressStart = firstSectionTop - windowHeight;
+            const progressEnd = lastSectionBottom - windowHeight;
+            const totalProgressDistance = progressEnd - progressStart;
+            const currentProgress = scrollTop - progressStart;
+            const progressPercent = Math.max(0, Math.min(100, (currentProgress / totalProgressDistance) * 100));
+            
+            elements.progressFill.style.width = progressPercent + '%';
+
+            elements.steps.forEach((step, index) => {
+                step.classList.remove('active');
+                if (index === currentSectionIndex) step.classList.add('active');
+            });
+
+            const containerWidth = elements.progressSteps.offsetWidth;
+            const stepsWidth = elements.stepsContainer.scrollWidth || elements.stepsContainer.offsetWidth;
+            let translateX = 0;
+            
+            if (stepsWidth > containerWidth) {
+                const activeStep = elements.steps[currentSectionIndex];
+                if (activeStep) {
+                    let targetTranslateX = -activeStep.offsetLeft;
+                    targetTranslateX = Math.min(targetTranslateX, 0);
+                    const maxLeftTranslate = -(stepsWidth - containerWidth);
+                    targetTranslateX = Math.max(targetTranslateX, maxLeftTranslate);
+                    translateX = targetTranslateX;
+                }
+            }
+            
+            elements.stepsContainer.style.transform = `translateX(${translateX}px)`;
+        }
+
+        function handleScroll() {
+            if (!state.isScrolling) {
+                requestAnimationFrame(() => {
+                    updateProgress();
+                    state.isScrolling = false;
+                });
+                state.isScrolling = true;
+            }
+        }
+
+        // Event listeners
+        function initEventListeners() {
+            // Logo interaction
+            if (elements.logoContainer) {
+                elements.logoContainer.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            // Bio show more functionality
+            if (elements.showMoreBtn && elements.bioExpanded) {
+                elements.showMoreBtn.addEventListener('click', function() {
+                    if (!state.isExpanded) {
+                        elements.bioExpanded.classList.add('active');
+                        elements.showMoreBtn.textContent = 'Show Less';
+                        elements.showMoreBtn.classList.add('expanded');
+                        state.isExpanded = true;
+                    } else {
+                        elements.bioExpanded.classList.remove('active');
+                        elements.showMoreBtn.textContent = 'Show More';
+                        elements.showMoreBtn.classList.remove('expanded');
+                        state.isExpanded = false;
+                    }
+                });
+            }
+
+            // Expandable principle cards
+            elements.expandableCards.forEach(card => {
+                const header = card.querySelector('.principle-header');
+                header.addEventListener('click', () => {
+                    const isExpanded = card.classList.contains('expanded');
+                    elements.expandableCards.forEach(otherCard => {
+                        if (otherCard !== card) otherCard.classList.remove('expanded');
+                    });
+                    card.classList.toggle('expanded', !isExpanded);
+                });
+            });
+
+            // Pattern pills
+            elements.patternPills.forEach(pill => {
+                pill.addEventListener('click', () => openPattern(pill.dataset.pattern));
+            });
+
+            // Modal controls
+            if (elements.closeBtn) elements.closeBtn.addEventListener('click', closePattern);
+            if (elements.nextPatternBtn) elements.nextPatternBtn.addEventListener('click', nextPattern);
+            if (elements.overlay) elements.overlay.addEventListener('click', closePattern);
+            if (elements.patternContent) elements.patternContent.addEventListener('click', e => e.stopPropagation());
+
+            // Progress step clicks
+            elements.steps.forEach(step => {
+                step.addEventListener('click', function() {
+                    const sectionId = this.getAttribute('data-section');
+                    const section = document.getElementById(sectionId);
+                    if (section) section.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+
+            // Keyboard events
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closePattern();
+            });
+
+            // Scroll events
+            window.addEventListener('scroll', handleScroll);
+            window.addEventListener('resize', updateProgress);
+        }
+
+        // Initialize app
+        function init() {
+            // Initialize colors for first message
+            setTimeout(() => {
+                const highlight = elements.heroMessage?.querySelector('.highlight');
+                if (highlight) {
+                    const colorIndex = parseInt(highlight.getAttribute('data-color'));
+                    if (!isNaN(colorIndex)) updateColors(colorIndex);
+                }
+            }, 100);
+
+            // Rotate messages every 15 seconds
+            setInterval(rotateMessage, 15000);
+
+            // Initialize event listeners
+            initEventListeners();
+
+            // Initial progress update
+            updateProgress();
+        }
+
+        // Start app when DOM is ready
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
