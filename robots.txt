@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Block common SEO bots that add no value
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
