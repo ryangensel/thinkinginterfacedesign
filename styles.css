@@ -1973,4 +1973,155 @@
                 padding: 14px 16px;
             }
         }
-        
+
+        /* 404 Error Page Styles */
+        .error-section {
+            min-height: 100vh;
+            padding: var(--section-padding);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(255, 0, 110, 0.05) 0%, rgba(255, 122, 0, 0.05) 100%);
+        }
+
+        .error-content {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: clamp(40px, 6vh, 60px);
+        }
+
+        .error-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: clamp(20px, 3vh, 30px);
+        }
+
+        .error-number {
+            font-size: clamp(6rem, 15vw, 12rem);
+            font-weight: 100;
+            line-height: 0.9;
+            background: linear-gradient(135deg, var(--neon-pink) 0%, var(--neon-orange) 50%, var(--neon-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            text-shadow: 0 0 50px rgba(255, 0, 110, 0.3);
+        }
+
+        .error-title {
+            margin-bottom: 0;
+            background: linear-gradient(135deg, var(--neon-pink) 0%, var(--neon-orange) 50%, var(--neon-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .error-subtitle {
+            font-size: clamp(1rem, 2.2vw, 1.2rem);
+            font-weight: 300;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0;
+            text-align: left;
+        }
+
+        .error-line-accent {
+            background: linear-gradient(180deg, var(--neon-pink) 0%, var(--neon-orange) 100%);
+            box-shadow: 0 0 10px rgba(255, 0, 110, 0.5);
+        }
+
+        .error-suggestions {
+            padding: clamp(28px, 4vh, 40px);
+            text-align: left;
+        }
+
+        .error-suggestions:hover {
+            border-color: rgba(255, 0, 110, 0.3);
+            box-shadow: 0 8px 32px rgba(255, 0, 110, 0.15);
+        }
+
+        .error-suggestions::before {
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 110, 0.1), transparent);
+        }
+
+        .suggestions-title {
+            font-size: clamp(1.3rem, 3vw, 1.6rem);
+            font-weight: 300;
+            margin-bottom: clamp(20px, 3vh, 24px);
+            background: linear-gradient(135deg, var(--neon-pink) 0%, var(--neon-orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .suggestion-links {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(12px, 2vh, 16px);
+        }
+
+        .suggestion-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            cursor: pointer;
+        }
+
+        .back-link {
+            background: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-family: var(--font-primary);
+            width: 100%;
+            justify-content: flex-start;
+        }
+
+        .suggestion-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 0, 110, 0.3);
+            color: var(--white);
+            transform: translateX(4px);
+        }
+
+        .link-icon {
+            font-size: 1.2em;
+            flex-shrink: 0;
+        }
+
+        .link-text {
+            font-weight: 300;
+        }
+
+        /* 404 Mobile Responsive */
+        @media (max-width: 768px) {
+            .error-section {
+                padding: 100px 20px 40px;
+            }
+            
+            .error-suggestions {
+                padding: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .error-section {
+                padding: 90px 16px 30px;
+            }
+            
+            .error-suggestions {
+                padding: 20px;
+            }
+        }        
