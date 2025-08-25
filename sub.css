@@ -568,13 +568,33 @@
     background-clip: text;
 }
 
+.content-body h3 {
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    font-weight: 300;
+    margin-bottom: clamp(16px, 2.5vh, 20px);
+    margin-top: clamp(20px, 3vh, 40px);
+    color: rgba(255, 255, 255, 0.95);
+    display: inline-block;
+    background: linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-blue) 100%);
+    background-size: 100% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    padding-bottom: 4px;
+}
+
+
 /* Style for paragraphs in the main article body */
 .content-body p {
     font-size: clamp(1rem, 2.2vw, 1.4rem);
     font-weight: 300;
-    line-height: 1.7; /* Slightly increased for better readability on wide lines */
+    line-height: 1.7;
     color: rgba(255, 255, 255, 0.85);
-    margin-bottom: clamp(16px, 2.5vh, 24px); /* Adds space between paragraphs */
+    margin-bottom: clamp(16px, 2.5vh, 24px);
+}
+
+.content-body strong {
+    color: var(--white);
+    font-weight: 400;
 }
 
 .content-footer {
