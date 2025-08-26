@@ -2,7 +2,8 @@
         .hero-section {
             padding-top: clamp(140px, 20vh, 240px);
             padding-bottom: clamp(80px, 15vh, 140px);
-            max-width: 1400px;
+            padding-left: clamp(20px, 5vw, 60px); 
+            padding-right: clamp(20px, 5vw, 60px); 
             margin: 0 auto;
             text-align: left;
             position: relative;
@@ -513,12 +514,24 @@
         }
 
         .layer-section {
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.6);  /* Increased from 0.4 to 0.6 */
+            border: 1px solid rgba(255, 255, 255, 0.4);  /* Increased from 0.2 to 0.4 */
             border-radius: 16px;
             overflow: hidden;
             transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
             position: relative;
+            cursor: pointer;  /* Add this to make it obviously clickable */
+        }
+
+        /* Add a subtle glow to make them more visible */
+        .layer-section::after {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent, rgba(255, 255, 255, 0.1));
+            border-radius: 17px;
+            z-index: -1;
+            opacity: 0.5;
         }
 
         .layer-section::before {
@@ -567,12 +580,12 @@
         }
 
         .layer-shape svg path[fill="#AAE8FF"] {
-            fill: rgba(255, 255, 255, 0.4);
+            fill: rgba(255, 255, 255, 0.6);
             transition: all 0.4s ease;
         }
 
         .layer-shape svg path[stroke="black"] {
-            stroke: rgba(255, 255, 255, 0.6);
+            stroke: rgba(255, 255, 255, 0.8);
             stroke-width: 10;
             transition: all 0.4s ease;
         }
@@ -587,7 +600,7 @@
             font-size: clamp(1.8rem, 4vw, 2.4rem);
             font-weight: 200;
             margin-bottom: clamp(12px, 1.5vh, 16px);
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.8);
             line-height: 1.2;
             transition: all 0.4s ease;
         }
@@ -596,7 +609,7 @@
             font-size: clamp(1rem, 2.2vw, 1.2rem);
             font-weight: 300;
             line-height: 1.5;
-            color: rgba(255, 255, 255, 0.4);
+            color: rgba(255, 255, 255, 0.6);
             transition: all 0.4s ease;
         }
 
@@ -1748,13 +1761,6 @@
         }
 
         /* Responsive Design */
-
-        @media (max-width: 1400px) {
-            .hero-section {
-                padding-left: clamp(20px, 5vw, 60px);
-                padding-right: clamp(20px, 5vw, 60px);
-            }
-        }
 
         @media (max-width: 1023px) {
             .bio-portrait { margin-bottom: clamp(20px, 4vh, 40px); }

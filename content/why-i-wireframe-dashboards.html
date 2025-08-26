@@ -49,63 +49,75 @@
 
             <article class="content-body" id="content-body">
 
-                    <h2 class="content-subtitle"><span>Video Transcript</span></h2>
-                    
-                    <p>Some of the smartest people I know in analytics feel stuck in situations that seem designed to waste their expertise. And the more people I talk to, the more this sounds like a normal experience. The analytics discipline is going through a transition while in the background two other inflection points are converging, economic uncertainty, and AI hype. These are different shifts happening at the same time, but they're amplifying the effects you're feeling.</p>
+                <p>The divide in the data community about wireframing dashboards reveals more about organizational dynamics than process preferences. Teams advocating to skip wireframes often mistake their environment for conscious choices. <strong>People from various functions, company scales, and skill levels consume community content and amplify what sounds like good advice without revealing the circumstances that shaped their preferences.</strong></p>
 
-                    <h3>Content Warning</h3>
+                <p>The myth that "data can speak for itself" drives poor design decisions. Every metric carries human fingerprints from collection through presentation. More data often creates less certainty, not more.</p>
 
-                    <p>The content on this site isn't for beginners. It's for analytics leaders and practitioners who've sensed this change. If you're one of those people this site will validate what you've been missing the words to explain, and for everyone else, it might not resonate.</p>
+                <p>Starting in tools like Tableau immediately narrows thinking to what the tool does well, making design decisions reactions to capabilities rather than responses to business problems. While these tools offer impressive flexibility, they shape conception of what's possible before you've explored what's valuable. Your wireframing process needs to account for this complexity rather than pretending it doesn't exist.</p>
 
-                    <p>We're gonna talk about the upstream dynamics, the competing priorities, unclear language and hidden assumptions that create conditions where people and projects fail or succeed. I don't suggest trying to change your entire organization, that's impractical, but we can get better at positioning ourselves within the reality we're working in.</p>
+                <p>Understanding what information the dashboard should provide requires examining the business context and organizational dynamics that shape how the data will be used. Before we can talk about solutions, we need to examine the environments that lead data professionals toward their preferences and restore agency to creators rather than accepting inherited process.</p>
 
-                    <h3>Investment</h3>
+                <h3>Proximity</h3>
 
-                    <p>Let's start with a little history. Organizations poured resources into analytics capabilities, built data engineering teams, hired data scientists, built dashboards, created governance coalitions, and gave seats at the table to analytics professionals.</p>
+                <p>Your proximity to business capabilities shapes your approach to dashboard creation. Teams close to direct levers of change can often start with data because they understand their action space intimately.</p>
 
-                    <p>Initially, there were what felt like quick wins, more numbers became accessible for analysis. People felt involved and were talking more often about objective measurement. Visibility felt like a virtue. Democratizing data was talked about with excitement, as if access alone would drive better decisions. Operations seemed to get more efficient as manual tasks moved from one team to another or got automated entirely.</p>
+                <p>Take pricing teams, for example. They know which metrics matter because they directly control the mechanisms that move them. These cases work well for immediate dashboard creation because they're orienting actions to data within a well understood domain using metrics that have been collected consistently.</p>
 
-                    <p>These weren't mistakes. <strong>They were logical responses to what felt like obvious needs. But then they hit the plateau where additional investment produced diminishing returns.</strong> We're experiencing the adolescence of analytics, outgrowing the early excitement where new insights were celebrated like they belonged on your parents' fridge.</p>
+                <p>The kneejerk reaction might be to conclude that if you're not close enough to business capabilities, you shouldn't be creating dashboards at all. While this contains a kernel of truth, it oversimplifies a complex dynamic. <strong>Even teams operating close to the business with familiar data sources and deep domain expertise need to externalize their assumptions before development.</strong> Without this step, they risk embedding their own blind spots into the dashboard, creating an interface that perfectly serves their personal mental model, while failing to serve the broader organization.</p>
 
-                    <p>Organizations were temporarily patient expecting that eventually the cost would translate to benefits.</p>
+                <h3>Complexity</h3>
 
-                    <h3>Competition</h3>
+                <p>The problems compound as you move further from these direct controls. Product teams face engineering cycles, prioritization battles, and instrumentation delays before they can even collect relevant data. Sales teams may have solid revenue data, but miss crucial context about customer journeys. </p>
 
-                    <p>However, in an environment of higher cost, companies are treating analytics as overhead to manage. To keep up with expectations organizations have stretched their people to unsustainable levels, accumulating more responsibilities to show activity. While AI hype is providing a convenient distraction to avoid confronting why traditional analytics investments haven't delivered on their promises.</p>
+                <p>The marketing funnels and attribution logic that connect customer behavior to sales outcomes remain frustratingly incomplete, forcing teams to work with fragments of the full story. When you're far from capability, or when capability is diffused through different functions, the data itself becomes more abstract, often working with data that doesn't exist yet, requiring you to map assumptions before you can design solutions.</p>
 
-                    <p>There's a friction here. It feels like everyone is working hard, but they're not quite working on the same problem. <strong>IT, business, and data teams are locked in turf wars over budget and attention.</strong> People feel trapped in their role limited by the game they assume they're playing while projecting a promotable identity that reinforces the status quo. And the suspicion that you're spending energy on things that make the organization less efficient is not only unpopular, it seeds doubts that challenge job security. Nobody wants to admit this is happening, but everyone can feel it.</p>
+                <p><strong>The unarticulated challenge is that many BI professionals respond to wireframing questions from positions close to capabilities where data and action are tightly coupled, and they've assumed that their job is to create dashboards.</strong> Their advice, while valid for their context, breaks down as you move further from direct control. Most data problems don't start with data, they start with assumptions about what the data tells us about the business.</p>
 
-                    <p>And in their budget conflicts, we've turned data work into a commodity, creating forgettable experiences where we're treating people like APIs, just to get to the next thing on the task list. Thinking that creating an economy of scale around these outputs will protect us from criticism.</p>
+                <h3>Scale</h3>
 
-                    <p>Teams are optimizing for executive visibility instead of business outcomes, because <strong>collaborative work makes individual impact invisible.</strong></p>
+                <p>Scale fragments knowledge and creates coordination overhead that fundamentally changes how teams must work. While small teams can iterate quickly with context held in a few heads, enterprise environments demand different approaches. The complexity isn't just technical, it's organizational. Each stakeholder brings their own mental model of how the business works, their own priorities, and their own constraints. Scale doesn't just add complexity, it multiplies it through interaction effects between teams and systems.</p>
 
-                    <h3>Systems</h3>
+                <p><strong>The cost of mistakes rises with scale because changes impact more users and processes.</strong> What looks like bureaucratic overhead in small teams becomes a central coordination mechanism at scale. The one person BI team skipping wireframes operates in a fundamentally different context than enterprise teams. The pressure to move quickly often leads teams to skip crucial understanding phases, creating technical debt that compounds over time.</p>
 
-                    <p>What I've learned is that this isn't really a data or technology problem. It's about influence and communication. This happens because we all use the same words, but operate from different mental models of how the business actually works.</p>
+                <h3>Exploration or Production</h3>
 
-                    <p>And what you're feeling isn't failure. It's a predictable result of treating design problems with software engineering tactics. This isn't about individual competence, it's about systems design. We can assume better technology will fix broken communication, but technology just accelerates existing dysfunction.</p>
+                <p>The distinction between data exploration and dashboard creation becomes critical at scale. Data exploration during discovery, even using BI tools to prototype capabilities, serves a different purpose than building production dashboards. These prototypes validate technical feasibility and data relationships without the overhead of traditional development.</p>
 
-                    <p><strong>However, we live in a world where broken systems make people blame themselves.</strong> You're not just providing data, you're managing the organizational anxiety that comes from not understanding how decisions actually get made.</p>
+                <p>Organizations need both exploration spaces and dashboards, but conflating these purposes creates confusion. Curated data sources for self serve exploration, where analysts drive their own discovery, are fundamentally different from dashboards designed to drive others decisions. When we blur these lines, we end up with too many mediocre dashboards that fail to serve either purpose well.</p>
 
-                    <h3>Artifact Factory</h3>
+                <h3>Mental Models</h3>
 
-                    <p>Analytics has this backwards. When we optimize for manufacturing artifacts like dashboards and presentations, informed humans become the byproduct. But when we prioritize creating people who understand their business well enough to act differently, the artifacts become the byproduct. Creating and using the tools becomes the journey that changes people. <strong>The result is that our working relationships and the tools we use, the very interfaces between us have created more distraction instead of helping us think.</strong></p>
+                <p>Dashboards encode assumptions about reality. Starting with data skips the crucial work of understanding how different teams view their world. Product managers, analysts, and executives all carry mental models shaped by their roles and experiences. These models determine what metrics mean and which changes matter. </p>
 
-                    <p>You're going through the motions, but not seeing results because you're treating all analytics work the same. Instead of separating the administrative cost of doing business with the strategic investment in improvement. When people confuse them, you end up with more meetings, more reports, more handoffs between teams, and lobbying becomes the job where attention is the score. And once you see it reframed, different solutions become possible.</p>
+                <p><strong>The undervalued skill in business intelligence isn't technical implementation, it's getting non data people to externalize their thinking about problems before you frame them in data.</strong></p>
 
-                    <h3>Different Approach</h3>
+                <h3>Alignment</h3>
 
-                    <p>So why trust me to help you with this?</p>
+                <p>Success requires an intentional progression of artifacts that build shared understanding. Start with open discussions about how people work and think about their problems, not what dashboard they want. These conversations lead naturally to collaborative sketching, where rough ideas can be quickly captured and discarded without the weight of formal documentation.</p>
 
-                    <p>I'm Ryan Gensel. I work with analytics teams to figure out how the business actually operates. I help them position themselves better within those realities and design interfaces that either get decisions to the people who can make them or automate the stuff that doesn't need human judgment. Because, these are design problems, not technical ones.
+                <p>Sketches evolve into wireframes where patterns emerge and stakeholders align on basic approaches. Only then should detailed mock ups be considered. Each artifact serves as a milestone in stakeholder alignment, a checkpoint to validate assumptions before investing in the next level of fidelity.</p>
 
-                    <p>I've spent my career at Apple and across hundreds of other organizations studying why teams with talented people and sophisticated tools still get trapped in these patterns.</p>
+                <p>This iterative journey creates space for discovery, an adjustment that jumping straight to dashboard development skips entirely. Each stage costs less to modify than the next, creating natural breakpoints to reassess direction before commitment escalates.</p>
 
-                    <p>Most analytics advice comes from people ignoring these cycles because techniques and "best practices" are easier to sell. <strong>You want someone who's seen the consequence of these patterns, not someone that's pretending they don't exist.</strong> I'm not telling you to stop what's working, but if you're frustrated with the results, there might be a different approach.</p>
+                <h3>The "Job"</h3>
 
-                    <p>If that resonates, then read on, because doing the same things and expecting different results feels worse than admitting there might be something you're missing. And that simple act of curiosity is the first step to becoming unstuck. Don't wait for it to feel urgent to act because it reduces your optionality.</p>
+                <p>Your job isn't to create dashboards, it's to build understanding of how organizations actually work. You need time to ask whether a dashboard remains a good idea at all, because once development gains momentum, costs escalate and assumptions become fixed.</p>
 
-                    <p>Instead, reach out for a conversation now.</p>
+                <p>Wireframes aren't the beginning of the process, they're a milestone in a longer journey of organizational learning. They create space to challenge assumptions, align mental models, and build shared understanding before committing to implementation.</p>
+
+                <p>The skilled facilitator remains comfortable enough to ask seemingly simple questions that others avoid for fear of embarassing themselves. You bring stakeholders along during the journey of understanding rather than surprising them with solutions.</p>
+
+                <h3>The Market Correction Against Dashboards</h3>
+
+                <p>An unused dashboard costs the same to produce as one that transforms the business. Teams that skip the challenging work of understanding to rush implementation find themselves maintaining digital junk drawers that fail to drive decisions or action.</p>
+
+                <p><strong>Your success ratio with dashboards has less to do with your technical skills than your ability to map out organizations actually think and work.</strong></p>
+
+                <p>The instinct to reach for familiar tools often shortcuts crucial problem understanding. Like surgeons who see every problem through the lens of their speciality, our tool proficiency can blind us to better approaches.</p>
+
+                <h3>Conclusion: Elevate the Standard</h3>
+
+                <p>The goal isn't to eliminate data exploration or prototyping. These activities are essential for discovery and validation. It's about elevating what dashboards are supposed to be by clearly distinguishing between exploration tools and decision interfaces, so we can build better dashboards that actually produce value instead of cluttering the analytical landscape.</p>
 
             </article>
 

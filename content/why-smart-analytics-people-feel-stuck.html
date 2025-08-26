@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Why Analytics People Feel Stuck - Thinking Interface Design</title>
+    <title id="page-title">Loading... - Thinking Interface Design</title>
     <link rel="icon" type="image/png" href="../favicon.png">
-    <meta name="description" content="[META_DESCRIPTION]">
+    <meta name="description" content="" id="page-description">
     <link rel="stylesheet" href="../global.css">
     <link rel="stylesheet" href="../sub.css">
     <script data-goatcounter="https://thinkinginterfacedesign.goatcounter.com/count"
@@ -29,69 +29,71 @@
     </header>
 
     <main class="content-archive-section">
-
         <div class="container">
             <header class="content-header">
-                <div class="card-meta">
-                    <div class="meta-item">
-                        <svg class="meta-icon" viewBox="0 0 24 24">
-                            <path d="M10,16.5V7.5L16,12M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
-                        </svg>
-                        <span class="meta-text">Video</span>
-                    </div>
-                    <div class="meta-item">
-                        <svg class="meta-icon" viewBox="0 0 24 24">
-                            <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
-                        </svg>
-                        <span class="meta-text">August 23, 2025</span>
-                    </div>
+                <div class="card-meta" id="content-meta">
+                    <!-- Dynamically populated -->
                 </div>
 
-                <h1 class="section-title">
-                    <span>Why Smart Analytics People Feel Stuck</span>
+                <h1 class="section-title" id="content-title">
+                    <span>Loading...</span>
                 </h1>
-
             </header>
 
-            <div class="content-video">
+            <!-- Video container (hidden by default, shown for video content) -->
+            <div class="content-video" id="content-video" style="display: none;">
                 <div class="glass-card">
-                    <iframe src="https://share.descript.com/embed/Z3l8MXOUO3c?loading=lazy" frameborder="0" allowfullscreen></iframe>
+                    <iframe id="video-iframe" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
 
-            <article class="content-body">
+            <article class="content-body" id="content-body">
 
                     <h2 class="content-subtitle"><span>Video Transcript</span></h2>
                     
                     <p>Some of the smartest people I know in analytics feel stuck in situations that seem designed to waste their expertise. And the more people I talk to, the more this sounds like a normal experience. The analytics discipline is going through a transition while in the background two other inflection points are converging, economic uncertainty, and AI hype. These are different shifts happening at the same time, but they're amplifying the effects you're feeling.</p>
 
+                    <h3>Content Warning</h3>
+
                     <p>The content on this site isn't for beginners. It's for analytics leaders and practitioners who've sensed this change. If you're one of those people this site will validate what you've been missing the words to explain, and for everyone else, it might not resonate.</p>
 
                     <p>We're gonna talk about the upstream dynamics, the competing priorities, unclear language and hidden assumptions that create conditions where people and projects fail or succeed. I don't suggest trying to change your entire organization, that's impractical, but we can get better at positioning ourselves within the reality we're working in.</p>
+
+                    <h3>Investment</h3>
 
                     <p>Let's start with a little history. Organizations poured resources into analytics capabilities, built data engineering teams, hired data scientists, built dashboards, created governance coalitions, and gave seats at the table to analytics professionals.</p>
 
                     <p>Initially, there were what felt like quick wins, more numbers became accessible for analysis. People felt involved and were talking more often about objective measurement. Visibility felt like a virtue. Democratizing data was talked about with excitement, as if access alone would drive better decisions. Operations seemed to get more efficient as manual tasks moved from one team to another or got automated entirely.</p>
 
-                    <p>These weren't mistakes. They were logical responses to what felt like obvious needs. But then they hit the plateau where additional investment produced diminishing returns. We're experiencing the adolescence of analytics, outgrowing the early excitement where new insights were celebrated like they belonged on your parents' fridge.</p>
+                    <p>These weren't mistakes. <strong>They were logical responses to what felt like obvious needs. But then they hit the plateau where additional investment produced diminishing returns.</strong> We're experiencing the adolescence of analytics, outgrowing the early excitement where new insights were celebrated like they belonged on your parents' fridge.</p>
 
-                    <p>Organizations were temporarily patient expecting that eventually the cost would translate to benefits. However, in an environment of higher cost, companies are treating analytics as overhead to manage. To keep up with expectations organizations have stretched their people to unsustainable levels, accumulating more responsibilities to show activity. While AI hype is providing a convenient distraction to avoid confronting why traditional analytics investments haven't delivered on their promises.</p>
+                    <p>Organizations were temporarily patient expecting that eventually the cost would translate to benefits.</p>
 
-                    <p>There's a friction here. It feels like everyone is working hard, but they're not quite working on the same problem. IT, business, and data teams are locked in turf wars over budget and attention. People feel trapped in their role limited by the game they assume they're playing while projecting a promotable identity that reinforces the status quo. And the suspicion that you're spending energy on things that make the organization less efficient is not only unpopular, it seeds doubts that challenge job security. Nobody wants to admit this is happening, but everyone can feel it.</p>
+                    <h3>Competition</h3>
+
+                    <p>However, in an environment of higher cost, companies are treating analytics as overhead to manage. To keep up with expectations organizations have stretched their people to unsustainable levels, accumulating more responsibilities to show activity. While AI hype is providing a convenient distraction to avoid confronting why traditional analytics investments haven't delivered on their promises.</p>
+
+                    <p>There's a friction here. It feels like everyone is working hard, but they're not quite working on the same problem. <strong>IT, business, and data teams are locked in turf wars over budget and attention.</strong> People feel trapped in their role limited by the game they assume they're playing while projecting a promotable identity that reinforces the status quo. And the suspicion that you're spending energy on things that make the organization less efficient is not only unpopular, it seeds doubts that challenge job security. Nobody wants to admit this is happening, but everyone can feel it.</p>
 
                     <p>And in their budget conflicts, we've turned data work into a commodity, creating forgettable experiences where we're treating people like APIs, just to get to the next thing on the task list. Thinking that creating an economy of scale around these outputs will protect us from criticism.</p>
 
-                    <p>Teams are optimizing for executive visibility instead of business outcomes, because collaborative work makes individual impact invisible.</p>
+                    <p>Teams are optimizing for executive visibility instead of business outcomes, because <strong>collaborative work makes individual impact invisible.</strong></p>
+
+                    <h3>Systems</h3>
 
                     <p>What I've learned is that this isn't really a data or technology problem. It's about influence and communication. This happens because we all use the same words, but operate from different mental models of how the business actually works.</p>
 
                     <p>And what you're feeling isn't failure. It's a predictable result of treating design problems with software engineering tactics. This isn't about individual competence, it's about systems design. We can assume better technology will fix broken communication, but technology just accelerates existing dysfunction.</p>
 
-                    <p>However, we live in a world where broken systems make people blame themselves. You're not just providing data, you're managing the organizational anxiety that comes from not understanding how decisions actually get made.</p>
+                    <p><strong>However, we live in a world where broken systems make people blame themselves.</strong> You're not just providing data, you're managing the organizational anxiety that comes from not understanding how decisions actually get made.</p>
 
-                    <p>Analytics has this backwards. When we optimize for manufacturing artifacts like dashboards and presentations, informed humans become the byproduct. But when we prioritize creating people who understand their business well enough to act differently, the artifacts become the byproduct. Creating and using the tools becomes the journey that changes people. The result is that our working relationships and the tools we use, the very interfaces between us have created more distraction instead of helping us think.</p>
+                    <h3>Artifact Factory</h3>
+
+                    <p>Analytics has this backwards. When we optimize for manufacturing artifacts like dashboards and presentations, informed humans become the byproduct. But when we prioritize creating people who understand their business well enough to act differently, the artifacts become the byproduct. Creating and using the tools becomes the journey that changes people. <strong>The result is that our working relationships and the tools we use, the very interfaces between us have created more distraction instead of helping us think.</strong></p>
 
                     <p>You're going through the motions, but not seeing results because you're treating all analytics work the same. Instead of separating the administrative cost of doing business with the strategic investment in improvement. When people confuse them, you end up with more meetings, more reports, more handoffs between teams, and lobbying becomes the job where attention is the score. And once you see it reframed, different solutions become possible.</p>
+
+                    <h3>Different Approach</h3>
 
                     <p>So why trust me to help you with this?</p>
 
@@ -99,7 +101,7 @@
 
                     <p>I've spent my career at Apple and across hundreds of other organizations studying why teams with talented people and sophisticated tools still get trapped in these patterns.</p>
 
-                    <p>Most analytics advice comes from people ignoring these cycles because techniques and "best practices" are easier to sell. You want someone who's seen the consequence of these patterns, not someone that's pretending they don't exist. I'm not telling you to stop what's working, but if you're frustrated with the results, there might be a different approach.</p>
+                    <p>Most analytics advice comes from people ignoring these cycles because techniques and "best practices" are easier to sell. <strong>You want someone who's seen the consequence of these patterns, not someone that's pretending they don't exist.</strong> I'm not telling you to stop what's working, but if you're frustrated with the results, there might be a different approach.</p>
 
                     <p>If that resonates, then read on, because doing the same things and expecting different results feels worse than admitting there might be something you're missing. And that simple act of curiosity is the first step to becoming unstuck. Don't wait for it to feel urgent to act because it reduces your optionality.</p>
 
@@ -107,25 +109,35 @@
 
             </article>
 
-            <footer class="content-footer">
-                <div class="glass-card">
-                    <h3>Continue the Conversation</h3>
-                    <p>
-                        Have thoughts on this topic? We'd love to discuss how these ideas apply to your organization.
-                    </p>
-                    <div class="footer-cta-buttons">
-                        <a href="../contact.html" class="btn-primary">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                            </svg>
-                            Get in Touch
-                        </a>
-                        <a href="../content-index.html" class="action-button">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M19,3H5C3.9,3 3,3.9 3,5V19C3,20.1 3.9,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.9 20.1,3 19,3M19,19H5V5H19V19M17,17H7V15H17V17M17,13H7V11H17V13M17,9H7V7H17V9Z" />
-                            </svg>
-                            More Articles
-                        </a>
+            <!-- Related Content Section -->
+            <section class="related-content-section" id="related-content-section" style="display: none;">
+                <div class="related-content-header">
+                    <h3 class="related-content-title"><span>Related Content</span></h3>
+                </div>
+                <div class="related-content-grid" id="related-content-grid">
+                    <!-- Related content will be populated here -->
+                </div>
+            </section>
+
+            <footer class="content-footer-dramatic">
+                <div class="footer-header-section">
+                    <h2 class="footer-main-title">Ready for Next Steps?</h2>
+                    <div class="footer-description">
+                        <p>We bridge the gap between your data investments and business operations through <span class="service-item">Information Architecture</span>, <span class="service-item">Data Visualization</span>, <span class="service-item">Design</span>, <span class="service-item">Workshop Facilitation</span>, <span class="service-item">Training</span>, and <span class="service-item">Fractional Leadership</span>. We're technology platform agnostic and work with your existing infrastructure.</p>
+                    </div>
+                </div>
+
+                <div class="footer-cta-section">
+                    <div class="cta-box primary">
+                        <h3><span>Start the Conversation</span></h3>
+                        <p>Free consultation call to understand your environment and get clarity on your situation.</p>
+                        <a href="../contact.html" class="cta-button primary">Contact</a>
+                    </div>
+                    
+                    <div class="cta-box secondary">
+                        <h3><span>Explore More Ideas</span></h3>
+                        <p>Read deeper into organizational patterns and approaches that can change how your team works.</p>
+                        <a href="../content-index.html" class="cta-button secondary">Browse Content</a>
                     </div>
                 </div>
             </footer>
@@ -134,5 +146,140 @@
         </div>
     </main>
 
+    <!-- Load content data and populate page -->
+    <script src="../content-data.js"></script>
+    <script>
+        // Get the content ID from the URL filename
+        function getContentId() {
+            const path = window.location.pathname;
+            const filename = path.split('/').pop();
+            return filename.replace('.html', '');
+        }
+
+        // Format date for display
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+        }
+
+        // Get appropriate icon for content type
+        function getTypeIcon(type) {
+            if (type === 'Video') {
+                return `<svg class="meta-icon" viewBox="0 0 24 24">
+                    <path d="M10,16.5V7.5L16,12M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+                </svg>`;
+            } else {
+                return `<svg class="meta-icon" viewBox="0 0 24 24">
+                    <path d="M19,3H5C3.9,3 3,3.9 3,5V19C3,20.1 3.9,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.9 20.1,3 19,3M19,19H5V5H19V19M17,17H7V15H17V17M17,13H7V11H17V13M17,9H7V7H17V9Z" />
+                </svg>`;
+            }
+        }
+
+        // Load and display content
+        function loadContent() {
+            const contentId = getContentId();
+            
+            // Find the content item in the data
+            const contentItem = allContent.find(item => item.id === contentId);
+            
+            if (!contentItem) {
+                // Content not found, show error
+                document.getElementById('page-title').textContent = 'Content Not Found - Thinking Interface Design';
+                document.getElementById('content-title').innerHTML = '<span>Content Not Found</span>';
+                document.getElementById('content-body').innerHTML = '<p>The requested content could not be found.</p>';
+                return;
+            }
+
+            // Update page title and meta description
+            document.getElementById('page-title').textContent = `${contentItem.title} - Thinking Interface Design`;
+            document.getElementById('page-description').setAttribute('content', contentItem.metaDescription || contentItem.shortDescription);
+
+            // Update content header
+            const metaHtml = `
+                <div class="meta-item">
+                    <svg class="meta-icon" viewBox="0 0 24 24">
+                        <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                    </svg>
+                    <span class="meta-text">${formatDate(contentItem.date)}</span>
+                </div>`;
+
+            // Add read time if it exists
+            if (contentItem.readTime) {
+                const readTimeHtml = `
+                    <div class="meta-item">
+                        <svg class="meta-icon" viewBox="0 0 24 24">
+                            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.7L16.2,16.2Z"/>
+                        </svg>
+                        <span class="meta-text">${contentItem.readTime}</span>
+                    </div>`;
+                document.getElementById('content-meta').innerHTML = metaHtml + readTimeHtml;
+            } else {
+                document.getElementById('content-meta').innerHTML = metaHtml;
+            }
+
+            document.getElementById('content-title').innerHTML = `<span>${contentItem.title}</span>`;
+
+            // Handle video content
+            if (contentItem.type === 'Video' && contentItem.videoEmbedUrl) {
+                document.getElementById('content-video').style.display = 'block';
+                document.getElementById('video-iframe').src = contentItem.videoEmbedUrl;
+            }
+
+            // Load related content
+            loadRelatedContent(contentItem.relatedContent);
+        }
+
+        // Load related content section
+        function loadRelatedContent(relatedIds) {
+            if (!relatedIds || relatedIds.length === 0) return;
+
+            const relatedSection = document.getElementById('related-content-section');
+            const relatedGrid = document.getElementById('related-content-grid');
+            
+            relatedIds.forEach(id => {
+                const relatedItem = allContent.find(item => item.id === id);
+                if (!relatedItem) return;
+
+                const typeIcon = relatedItem.type === 'Video' 
+                    ? `<svg class="meta-icon" viewBox="0 0 24 24"><path d="M10,16.5V7.5L16,12M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg>`
+                    : `<svg class="meta-icon" viewBox="0 0 24 24"><path d="M19,3H5C3.9,3 3,3.9 3,5V19C3,20.1 3.9,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.9 20.1,3 19,3M19,19H5V5H19V19M17,17H7V15H17V17M17,13H7V11H17V13M17,9H7V7H17V9Z" /></svg>`;
+
+                const cardHTML = `
+                    <a href="../${relatedItem.contentPageUrl}" class="content-item-link">
+                        <div class="content-card">
+                            <div class="card-meta">
+                                <div class="meta-item">
+                                    ${typeIcon}
+                                    <span class="meta-text">${relatedItem.type}</span>
+                                </div>
+                                <div class="meta-item">
+                                    <svg class="meta-icon" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+                                    <span class="meta-text">${formatDate(relatedItem.date)}</span>
+                                </div>
+                                ${relatedItem.readTime ? `
+                                <div class="meta-item">
+                                    <svg class="meta-icon" viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.7L16.2,16.2Z"/></svg>
+                                    <span class="meta-text">${relatedItem.readTime}</span>
+                                </div>` : ''}
+                            </div>
+                            <h4 class="card-title">${relatedItem.title}</h4>
+                            <p class="card-description">${relatedItem.shortDescription}</p>
+                        </div>
+                    </a>
+                `;
+                
+                relatedGrid.insertAdjacentHTML('beforeend', cardHTML);
+            });
+
+            relatedSection.style.display = 'block';
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', loadContent);
+    </script>
 </body>
 </html>

@@ -10,49 +10,32 @@ const allContent = [
         shortDescription: 'Some of the smartest people I know in analytics feel stuck in situations that seem designed to waste their expertise. And the more people I talk to, the more this sounds like a normal experience. The analytics discipline is going through a transition while in the background two other inflection points are converging, economic uncertainty, and AI hype. These are different shifts happening at the same time, but they\'re amplifying the effects you\'re feeling.',
         videoEmbedUrl: 'https://share.descript.com/embed/Z3l8MXOUO3c?loading=lazy',
         contentPageUrl: 'content/why-smart-analytics-people-feel-stuck.html',
-        metaDescription: 'Understanding why talented analytics professionals feel trapped in dysfunctional systems and what to do about it.',
-        readTime: '8 min read'
+        metaDescription: 'Learn why analytics professionals feel stuck despite their expertise. Learn about the transition in analytics discipline, economic uncertainty, and AI hype that\'s amplifying workplace frustration.',
+        readTime: '8 min read',
+        relatedContent: ['data-visualization-philosophy', 'why-i-wireframe-dashboards']
     },
     {
-        id: 'self-service-analytics-myth',
+        id: 'data-visualization-philosophy',
         type: 'Article',
         isFeatured: 2,
         date: '2025-08-24',
-        title: 'The Self-Service Analytics Myth',
-        shortDescription: 'Understanding why "democratizing data" often creates more problems than it solves in most organizations. When teams lack shared context about how the business actually works, giving everyone access to data tools doesn\'t create alignment—it amplifies the existing dysfunction. The result is fragmented insights, competing narratives, and decision-making that optimizes individual departmental metrics while undermining overall organizational effectiveness.',
-        contentPageUrl: 'content/self-service-analytics-myth.html',
-        metaDescription: 'Why democratizing data access without democratizing understanding leads to organizational dysfunction and fragmented decision-making.',
-        readTime: '6 min read'
+        title: 'Data Visualization Philosophy',
+        shortDescription: 'Data visualization is about empowerment. Every chart, every metric, every interface we create either amplifies or diminishes someone\'s agency to affect change. This isn\'t just about displaying numbers. It\'s about making tools accessible for people to think constructively about their world and their ability to shape it.',
+        contentPageUrl: 'content/data-visualization-philosophy.html',
+        metaDescription: 'Learn how data visualization empowers decision-making. Explore design principles that amplify human agency and create tools for constructive thinking about organizational change.',
+        readTime: '8 min read',
+        relatedContent: ['why-smart-analytics-people-feel-stuck', 'why-i-wireframe-dashboards']
     },
     {
-        id: 'internal-product-fallacy',
+        id: 'why-i-wireframe-dashboards',
         type: 'Article',
         isFeatured: 3,
-        date: '2025-09-05',
-        title: 'The Internal Product Fallacy',
-        shortDescription: 'Why treating your internal data platform like a consumer product is a recipe for failure. Internal systems operate in fundamentally different environments than consumer products, with captive audiences, competing incentives, and the need for coordination rather than individual satisfaction.',
-        contentPageUrl: 'content/internal-product-fallacy.html',
-        metaDescription: 'Why applying consumer product development tactics to internal systems often makes things worse and what to do instead.',
-        readTime: '5 min read'
-    },
-    {
-        id: 'data-governance-theater',
-        type: 'Article',
-        date: '2025-08-15',
-        title: 'Data Governance Theater',
-        shortDescription: 'Why most data governance initiatives create the appearance of control while actually making coordination harder. The bureaucracy becomes the product, and the original problems persist under layers of process.',
-        contentPageUrl: 'content/data-governance-theater.html',
-        metaDescription: 'How data governance initiatives often become bureaucratic theater that obscures rather than solves underlying coordination problems.',
-        readTime: '7 min read'
-    },
-    {
-        id: 'metrics-that-mislead',
-        type: 'Article',
-        date: '2025-07-28',
-        title: 'Metrics That Mislead',
-        shortDescription: 'How well-intentioned metrics create perverse incentives and organizational gaming. When measurements become targets, they cease to be good measurements.',
-        contentPageUrl: 'content/metrics-that-mislead.html',
-        metaDescription: 'Understanding how metrics create unintended consequences and what to measure instead.',
-        readTime: '6 min read'
+        date: '2025-08-24',
+        title: 'Why I Wireframe Dashboards',
+        shortDescription: 'The divide in the data community about wireframing dashboards reveals more about organizational dynamics than process preferences. Teams advocating to skip wireframes often mistake their environment for conscious choices. People from various functions, company scales, and skill levels consume community content and amplify what sounds like good advice without revealing the circumstances that shaped their preferences.',
+        contentPageUrl: 'content/why-i-wireframe-dashboards.html',
+        metaDescription: 'Understand why wireframing dashboards matters for organizational alignment. Learn how proximity to business capabilities and complexity shape successful dashboard design processes.',
+        readTime: '6 min read',
+        relatedContent: ['why-smart-analytics-people-feel-stuck', 'data-visualization-philosophy']
     }
 ];
