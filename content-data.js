@@ -11,7 +11,7 @@ const allContent = [
         videoEmbedUrl: 'https://share.descript.com/embed/Z3l8MXOUO3c?loading=lazy',
         contentPageUrl: 'content/why-smart-analytics-people-feel-stuck.html',
         metaDescription: 'Learn why analytics professionals feel stuck despite their expertise. Learn about the transition in analytics discipline, economic uncertainty, and AI hype that\'s amplifying workplace frustration.',
-        readTime: '8 min read',
+        readTime: '8 min watch',
         relatedContent: ['data-visualization-philosophy', 'why-i-wireframe-dashboards']
     },
     {
@@ -23,7 +23,7 @@ const allContent = [
         shortDescription: 'Data visualization is about empowerment. Every chart, every metric, every interface we create either amplifies or reduces someone\'s agency to make decisions. This is about designing accessible tools for people to think critically about their working world and their ability to shape it, not just display numbers.',
         contentPageUrl: 'content/data-visualization-philosophy.html',
         metaDescription: 'Learn how data visualization empowers decision-making. Explore design principles that amplify human agency and create tools for constructive thinking about organizational change.',
-        readTime: '8 min read',
+        readTime: '10 min read',
         relatedContent: ['why-smart-analytics-people-feel-stuck', 'why-i-wireframe-dashboards']
     },
     {
