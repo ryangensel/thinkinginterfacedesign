@@ -518,7 +518,7 @@
     padding-bottom: 4px;
 }
 
-.content-body p {
+.content-body p, li {
     font-size: clamp(1rem, 2.2vw, 1.4rem);
     font-weight: 300;
     line-height: 1.7;
@@ -844,5 +844,232 @@
     .cta-box {
         padding: clamp(24px, 4vh, 32px);
         gap: clamp(16px, 2.5vh, 20px);
+    }
+}
+
+/* ===== PRESENTATION CONTENT STYLES ===== */
+
+.slide-image {
+    margin: clamp(32px, 5vh, 48px) 0;
+    text-align: left;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    width: 66%;
+}
+
+.slide-image:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.slide-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.slide-image:hover img {
+    transform: scale(1.02);
+}
+
+/* Quote/Paraphrase Blocks - Using Homepage Vertical Gradient Line Style */
+.text-with-accent {
+    position: relative;
+    padding: clamp(24px, 3vw, 32px) clamp(48px, 6vw, 64px);
+    margin: clamp(28px, 4.5vh, 36px) 0;
+    background: rgba(0, 0, 0, .3);
+}
+
+.text-with-accent .line-accent {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 10px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, var(--neon-pink) 0%, var(--neon-purple) 100%);
+    box-shadow: 0 0 10px rgba(255, 255, 255, .2);
+}
+
+.text-with-accent p {
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0px 0px clamp(16px, 2.5vh, 24px) 0px;
+}
+
+.text-with-accent p:last-child {
+    margin: 0px;
+}
+
+
+.footnote-link {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-weight: 200;
+    transition: color 0.2s ease;
+    font-size: 60%;
+    vertical-align: super;
+    cursor: pointer;
+    scroll-margin-top: clamp(110px, 10vh, 135px);
+    outline: none;
+}
+
+.text-with-accent .footnote-link {
+    display: block;
+}
+
+.footnote-link:hover {
+    color: var(--neon-pink);
+}
+
+.text-with-accent ul {
+    margin: clamp(16px, 2.5vh, 24px);
+}
+
+.text-with-accent li {
+    list-style-type: none;
+    margin-bottom: 0;
+}
+
+/* Dramatic Lists */
+.dramatic-list {
+    margin: clamp(32px, 5vh, 48px) 0;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: clamp(14px, 2vh, 18px) clamp(24px, 4vh, 36px);
+    position: relative;
+    overflow: hidden;
+    max-width: 66%;
+}
+
+.list-item {
+    position: relative;
+    padding: clamp(12px, 2vh, 16px) 0;
+    padding-left: clamp(36px, 5vw, 48px);
+    font-size: clamp(1rem, 2.2vw, 1.2rem);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 300;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.list-item:last-child {
+    border-bottom: none;
+}
+
+.list-item::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(135deg, var(--neon-pink) 30%, var(--neon-purple) 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 500;
+    font-size: 1.4em;
+}
+
+.list-item:hover {
+    color: var(--white);
+    padding-left: clamp(42px, 6vw, 56px);
+}
+
+.list-item:hover::before {
+    color: var(--neon-blue);
+    text-shadow: 0 0 15px rgba(58, 134, 255, 0.7);
+}
+
+
+/* Citations Section */
+.footnotes-section {
+    margin-top: clamp(60px, 8vh, 80px);
+    padding-top: clamp(40px, 6vh, 60px);
+    border-top: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.footnote {
+    margin-bottom: clamp(16px, 2.5vh, 20px);
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.8;
+    align-items: flex-start;
+    font-size: clamp(1rem, 2.2vw, 1.4rem);
+    font-weight: 300;
+}
+
+.footnote a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    scroll-margin-top: clamp(110px, 10vh, 135px);
+    background: rgba(255, 255, 255, .05);
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.footnote a:nth-child(1) {
+    background: none;
+    text-decoration: underline;
+}
+
+.footnote a:hover {
+    color: var(--neon-pink);
+}
+
+.footnote a:target {
+    background: var(--neon-pink);
+    outline: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .slide-image {
+        width: 100%;
+    }
+
+    .text-with-accent {
+        padding-left: clamp(32px, 5vw, 40px);
+    }
+    
+    .slide-image {
+        margin: clamp(24px, 4vh, 32px) 0;
+    }
+    
+    .dramatic-list {
+        padding: clamp(20px, 3vh, 28px);
+        margin: clamp(24px, 4vh, 32px) 0;
+        max-width: 100%;
+    }
+    
+    .list-item {
+        padding-left: clamp(32px, 4vw, 40px);
+        font-size: clamp(0.95rem, 2vw, 1.1rem);
+    }
+    
+    .footnotes-section {
+        margin-top: clamp(40px, 6vh, 60px);
+        padding-top: clamp(32px, 5vh, 40px);
+    }
+    
+    .footnote {
+        font-size: clamp(0.8rem, 1.6vw, 0.9rem);
+    }
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 480px) {
+    
+    .text-with-accent {
+        padding-left: clamp(28px, 4vw, 32px);
+    }
+    
+    .list-item {
+        padding-left: clamp(28px, 4vw, 32px);
     }
 }

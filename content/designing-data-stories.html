@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Loading... - Thinking Interface Design</title>
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <meta name="description" content="" id="page-description">
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="../sub.css">
+    <script data-goatcounter="https://thinkinginterfacedesign.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="top-bar">
+            <a href="../index.html" class="logo-container">
+                <svg class="logo-svg" viewBox="0 0 313 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#a)"><path fill-rule="evenodd" clip-rule="evenodd" d="M34.487 19.752H23.284l1.63-2.822h7.943l1.63 2.822zm-6.314 10.93h-3.26l-5.839-10.109h3.26l5.84 10.108zM3.63 17.34l1.63 2.822-1.63 2.822L2 20.162l1.63-2.822zM22.571 6.41l1.63 2.822-5.839 10.109-1.63-2.822L22.57 6.41zM12.285 24.218h3.26l-5.601 9.697-1.63-2.821 3.971-6.876zm12.629-.822-1.63-2.822h11.203l-1.63 2.822h-7.944zm3.26-14.573h-3.26L23.284 6h3.26l1.63 2.822zm-5.84 10.93h-3.26l5.84-10.108h3.26l-5.84 10.109zm.95 14.574 1.63-2.822h3.26l-1.63 2.822h-3.26zm-5.396-21.45-1.63 2.822L10.656 6h3.26l3.972 6.876zm-7.232 21.45 5.602-9.698 1.63 2.822-3.972 6.876h-3.26zm6.076-10.52 1.63-2.821 5.84 10.108-1.63 2.822-5.84-10.108zM9.944 6.412l5.602 9.698h-3.26L8.314 9.233l1.63-2.822zM4.342 23.396l1.63-2.822H17.65l-1.63 2.822H4.343zm11.678-6.465 1.63 2.822H5.97l-1.63-2.822H16.02z" fill="white"/><path d="M44.118 14.032h-5.136v-3.168h14.04v3.168h-5.136V28h-3.768V14.032zm9.32-3.168h3.408v6.456h.072c.432-.72.984-1.24 1.656-1.56.672-.336 1.328-.504 1.968-.504.912 0 1.656.128 2.232.384.592.24 1.056.584 1.392 1.032.336.432.568.968.696 1.608.144.624.216 1.32.216 2.088V28H61.67v-7.008c0-1.024-.16-1.784-.48-2.28-.32-.512-.888-.768-1.704-.768-.928 0-1.6.28-2.016.84-.416.544-.624 1.448-.624 2.712V28h-3.408V10.864zm16.53 2.808h-3.407v-2.808h3.408v2.808zm-3.407 1.92h3.408V28H66.56V15.592zm4.891 0h3.24v1.728h.072c.432-.72.992-1.24 1.68-1.56a4.763 4.763 0 0 1 2.112-.504c.912 0 1.656.128 2.232.384.592.24 1.056.584 1.392 1.032.336.432.568.968.696 1.608.144.624.216 1.32.216 2.088V28h-3.408v-7.008c0-1.024-.16-1.784-.48-2.28-.32-.512-.888-.768-1.704-.768-.928 0-1.6.28-2.016.84-.416.544-.624 1.448-.624 2.712V28h-3.408V15.592zm13.339-4.728h3.408v9.192l4.296-4.464h4.032l-4.68 4.56L97.055 28h-4.128l-3.408-5.544-1.32 1.272V28H84.79V10.864zm15.773 2.808h-3.408v-2.808h3.408v2.808zm-3.408 1.92h3.408V28h-3.408V15.592zm4.892 0h3.24v1.728h.072c.432-.72.992-1.24 1.68-1.56a4.763 4.763 0 0 1 2.112-.504c.912 0 1.656.128 2.232.384.592.24 1.056.584 1.392 1.032.336.432.568.968.696 1.608.144.624.216 1.32.216 2.088V28h-3.408v-7.008c0-1.024-.16-1.784-.48-2.28-.32-.512-.888-.768-1.704-.768-.928 0-1.6.28-2.016.84-.416.544-.624 1.448-.624 2.712V28h-3.408V15.592zm18.81 9.48c.48 0 .904-.096 1.272-.288a2.66 2.66 0 0 0 .912-.768c.24-.32.416-.68.528-1.08.128-.416.192-.848.192-1.296 0-.512-.048-.992-.144-1.44a3.626 3.626 0 0 0-.48-1.224 2.485 2.485 0 0 0-.888-.84c-.368-.208-.832-.312-1.392-.312-.48 0-.896.096-1.248.288a2.709 2.709 0 0 0-.864.792c-.224.32-.392.696-.504 1.128a5.856 5.856 0 0 0-.144 1.32c0 .448.04.896.12 1.344a4 4 0 0 0 .456 1.176c.224.352.512.64.864.864.352.224.792.336 1.32.336zm6.144 2.136c0 .496-.072 1.064-.216 1.704a4.003 4.003 0 0 1-.864 1.776c-.448.56-1.096 1.032-1.944 1.416-.848.384-1.984.576-3.408.576-.608 0-1.232-.08-1.872-.24a5.846 5.846 0 0 1-1.728-.696 4.375 4.375 0 0 1-1.296-1.248c-.336-.496-.528-1.096-.576-1.8h3.384c.16.64.472 1.08.936 1.32.464.256 1 .384 1.608.384.96 0 1.656-.288 2.088-.864.448-.576.664-1.304.648-2.184V25.72h-.048a3.43 3.43 0 0 1-1.584 1.464 5.123 5.123 0 0 1-2.136.456c-.928 0-1.728-.16-2.4-.48a4.723 4.723 0 0 1-1.656-1.344 5.908 5.908 0 0 1-.96-1.992 9.96 9.96 0 0 1-.288-2.424c0-.8.112-1.568.336-2.304a6.069 6.069 0 0 1 1.032-1.968c.448-.576 1-1.032 1.656-1.368.672-.336 1.44-.504 2.304-.504.816 0 1.528.152 2.136.456.624.304 1.144.816 1.56 1.536h.048v-1.656h3.24v11.616zm7.384-16.344h3.768V28h-3.768V10.864zm5.518 4.728h3.24v1.728h.072c.432-.72.992-1.24 1.68-1.56a4.763 4.763 0 0 1 2.112-.504c.912 0 1.656.128 2.232.384.592.24 1.056.584 1.392 1.032.336.432.568.968.696 1.608.144.624.216 1.32.216 2.088V28h-3.408v-7.008c0-1.024-.16-1.784-.48-2.28-.32-.512-.888-.768-1.704-.768-.928 0-1.6.28-2.016.84-.416.544-.624 1.448-.624 2.712V28h-3.408V15.592zm17.346 0h2.496v2.28h-2.496v6.144c0 .576.096.96.288 1.152.192.192.576.288 1.152.288.192 0 .376-.008.552-.024.176-.016.344-.04.504-.072V28a8.11 8.11 0 0 1-.96.096c-.352.016-.696.024-1.032.024a9.19 9.19 0 0 1-1.512-.12c-.464-.064-.88-.2-1.248-.408a2.25 2.25 0 0 1-.84-.888c-.208-.384-.312-.888-.312-1.512v-7.32h-2.064v-2.28h2.064v-3.72h3.408v3.72zm11.27 4.872c-.16-.864-.448-1.52-.864-1.968-.4-.448-1.016-.672-1.848-.672-.544 0-1 .096-1.368.288-.352.176-.64.4-.864.672-.208.272-.36.56-.456.864a4.4 4.4 0 0 0-.144.816h5.544zm-5.544 2.16c.048 1.104.328 1.904.84 2.4s1.248.744 2.208.744c.688 0 1.28-.168 1.776-.504.496-.352.8-.72.912-1.104h3c-.48 1.488-1.216 2.552-2.208 3.192-.992.64-2.192.96-3.6.96-.976 0-1.856-.152-2.64-.456a5.62 5.62 0 0 1-1.992-1.344A6.146 6.146 0 0 1 160 24.448c-.288-.8-.432-1.68-.432-2.64 0-.928.152-1.792.456-2.592.304-.8.736-1.488 1.296-2.064a6.045 6.045 0 0 1 1.992-1.392c.784-.336 1.648-.504 2.592-.504 1.056 0 1.976.208 2.76.624a5.29 5.29 0 0 1 1.92 1.632c.512.688.88 1.472 1.104 2.352.224.88.304 1.8.24 2.76h-8.952zm9.773-7.032h3.24v2.304h.048c.16-.384.376-.736.648-1.056a3.88 3.88 0 0 1 .936-.84c.352-.24.728-.424 1.128-.552a4.07 4.07 0 0 1 1.248-.192c.224 0 .472.04.744.12v3.168a4.691 4.691 0 0 0-.576-.072 4.583 4.583 0 0 0-.648-.048c-.624 0-1.152.104-1.584.312a2.798 2.798 0 0 0-1.056.864c-.256.352-.44.768-.552 1.248-.112.48-.168 1-.168 1.56V28h-3.408V15.592zm10.312 2.28h-2.04v-2.28h2.04v-.96c0-1.104.344-2.008 1.032-2.712.688-.704 1.728-1.056 3.12-1.056.304 0 .608.016.912.048l.888.048v2.544c-.4-.048-.816-.072-1.248-.072-.464 0-.8.112-1.008.336-.192.208-.288.568-.288 1.08v.744h2.352v2.28h-2.352V28h-3.408V17.872zm7.344 1.536c.048-.8.248-1.464.6-1.992s.8-.952 1.344-1.272a5.652 5.652 0 0 1 1.824-.672 10.05 10.05 0 0 1 2.064-.216c.624 0 1.256.048 1.896.144a5.57 5.57 0 0 1 1.752.504c.528.256.96.616 1.296 1.08.336.448.504 1.048.504 1.8v6.456c0 .56.032 1.096.096 1.608s.176.896.336 1.152h-3.456a7.815 7.815 0 0 1-.168-.576 8.277 8.277 0 0 1-.072-.624 4.441 4.441 0 0 1-1.92 1.176 7.706 7.706 0 0 1-2.256.336 6.095 6.095 0 0 1-1.656-.216 3.792 3.792 0 0 1-1.344-.672 3.243 3.243 0 0 1-.912-1.152c-.208-.464-.312-1.016-.312-1.656 0-.704.12-1.28.36-1.728.256-.464.576-.832.96-1.104.4-.272.848-.472 1.344-.6a13.192 13.192 0 0 1 1.536-.336 26.05 26.05 0 0 1 1.512-.192c.496-.048.936-.12 1.32-.216s.688-.232.912-.408c.224-.192.328-.464.312-.816 0-.368-.064-.656-.192-.864a1.128 1.128 0 0 0-.48-.504 1.565 1.565 0 0 0-.696-.24 4.566 4.566 0 0 0-.84-.072c-.672 0-1.2.144-1.584.432-.384.288-.608.768-.672 1.44h-3.408zm7.872 2.52a1.662 1.662 0 0 1-.552.312c-.208.064-.44.12-.696.168-.24.048-.496.088-.768.12s-.544.072-.816.12a6.734 6.734 0 0 0-.768.192c-.24.08-.456.192-.648.336-.176.128-.32.296-.432.504-.112.208-.168.472-.168.792 0 .304.056.56.168.768.112.208.264.376.456.504.192.112.416.192.672.24.256.048.52.072.792.072.672 0 1.192-.112 1.56-.336.368-.224.64-.488.816-.792.176-.32.28-.64.312-.96a5.45 5.45 0 0 0 .072-.768v-1.272zm13.302-1.968c-.224-1.424-1.064-2.136-2.52-2.136-.544 0-1 .128-1.368.384-.368.24-.672.56-.912.96a4.177 4.177 0 0 0-.48 1.296 6.74 6.74 0 0 0 0 2.76c.096.464.248.888.456 1.272.224.368.52.672.888.912s.816.36 1.344.36c.816 0 1.44-.224 1.872-.672.448-.464.728-1.08.84-1.848h3.288c-.224 1.648-.864 2.904-1.92 3.768-1.056.864-2.408 1.296-4.056 1.296-.928 0-1.784-.152-2.568-.456a5.835 5.835 0 0 1-1.968-1.32 5.983 5.983 0 0 1-1.272-1.992c-.304-.784-.456-1.64-.456-2.568 0-.96.136-1.848.408-2.664.288-.832.704-1.544 1.248-2.136a5.586 5.586 0 0 1 1.992-1.416c.784-.336 1.68-.504 2.688-.504.736 0 1.44.096 2.112.288a5.383 5.383 0 0 1 1.824.888c.544.384.984.872 1.32 1.464.336.576.528 1.264.576 2.064h-3.336zm12.485.504c-.16-.864-.448-1.52-.864-1.968-.4-.448-1.016-.672-1.848-.672-.544 0-1 .096-1.368.288-.352.176-.64.4-.864.672-.208.272-.36.56-.456.864a4.4 4.4 0 0 0-.144.816h5.544zm-5.544 2.16c.048 1.104.328 1.904.84 2.4s1.248.744 2.208.744c.688 0 1.28-.168 1.776-.504.496-.352.8-.72.912-1.104h3c-.48 1.488-1.216 2.552-2.208 3.192-.992.64-2.192.96-3.6.96-.976 0-1.856-.152-2.64-.456a5.62 5.62 0 0 1-1.992-1.344 6.146 6.146 0 0 1-1.272-2.064c-.288-.8-.432-1.68-.432-2.64 0-.928.152-1.792.456-2.592.304-.8.736-1.488 1.296-2.064a6.045 6.045 0 0 1 1.992-1.392c.784-.336 1.648-.504 2.592-.504 1.056 0 1.976.208 2.76.624a5.29 5.29 0 0 1 1.92 1.632c.512.688.88 1.472 1.104 2.352.224.88.304 1.8.24 2.76h-8.952zm19.381 2.208h3.36a4.84 4.84 0 0 0 1.584-.264 3.548 3.548 0 0 0 1.368-.864c.4-.416.72-.952.96-1.608.24-.656.36-1.456.36-2.4 0-.864-.088-1.64-.264-2.328-.16-.704-.432-1.304-.816-1.8-.384-.496-.896-.872-1.536-1.128-.624-.272-1.4-.408-2.328-.408h-2.688v10.8zm-3.768-13.968h7.392c1.104 0 2.128.176 3.072.528.96.352 1.784.88 2.472 1.584.704.704 1.248 1.584 1.632 2.64.4 1.056.6 2.296.6 3.72 0 1.248-.16 2.4-.48 3.456-.32 1.056-.808 1.968-1.464 2.736-.64.768-1.448 1.376-2.424 1.824-.96.432-2.096.648-3.408.648h-7.392V10.864zm24.581 9.6c-.16-.864-.448-1.52-.864-1.968-.4-.448-1.016-.672-1.848-.672-.544 0-1 .096-1.368.288-.352.176-.64.4-.864.672-.208.272-.36.56-.456.864a4.4 4.4 0 0 0-.144.816h5.544zm-5.544 2.16c.048 1.104.328 1.904.84 2.4s1.248.744 2.208.744c.688 0 1.28-.168 1.776-.504.496-.352.8-.72.912-1.104h3c-.48 1.488-1.216 2.552-2.208 3.192-.992.64-2.192.96-3.6.96-.976 0-1.856-.152-2.64-.456a5.62 5.62 0 0 1-1.992-1.344 6.146 6.146 0 0 1-1.272-2.064c-.288-.8-.432-1.68-.432-2.64 0-.928.152-1.792.456-2.592.304-.8.736-1.488 1.296-2.064a6.045 6.045 0 0 1 1.992-1.392c.784-.336 1.648-.504 2.592-.504 1.056 0 1.976.208 2.76.624a5.29 5.29 0 0 1 1.92 1.632c.512.688.88 1.472 1.104 2.352.224.88.304 1.8.24 2.76h-8.952zm12.413 1.344c0 .368.072.688.216.96.16.256.36.472.6.648.24.16.512.28.816.36a4.042 4.042 0 0 0 1.728.048c.272-.064.512-.152.72-.264.224-.128.408-.288.552-.48.144-.208.216-.464.216-.768 0-.512-.344-.896-1.032-1.152-.672-.256-1.616-.512-2.832-.768-.496-.112-.984-.24-1.464-.384-.464-.16-.88-.36-1.248-.6a3.09 3.09 0 0 1-.888-.936c-.224-.384-.336-.848-.336-1.392 0-.8.152-1.456.456-1.968.32-.512.736-.912 1.248-1.2a5.061 5.061 0 0 1 1.728-.624 10.01 10.01 0 0 1 1.968-.192c.672 0 1.32.064 1.944.192.64.128 1.208.344 1.704.648.496.304.904.712 1.224 1.224.336.496.536 1.128.6 1.896h-3.24c-.048-.656-.296-1.096-.744-1.32-.448-.24-.976-.36-1.584-.36-.192 0-.4.016-.624.048a1.978 1.978 0 0 0-.624.144c-.176.08-.328.2-.456.36-.128.144-.192.344-.192.6 0 .304.112.552.336.744.224.192.512.352.864.48.368.112.784.216 1.248.312.464.096.936.2 1.416.312.496.112.976.248 1.44.408.48.16.904.376 1.272.648.368.256.664.584.888.984.224.384.336.864.336 1.44 0 .816-.168 1.504-.504 2.064-.32.544-.744.984-1.272 1.32a5.097 5.097 0 0 1-1.824.696 9.823 9.823 0 0 1-2.064.216c-.72 0-1.424-.072-2.112-.216a5.712 5.712 0 0 1-1.848-.72 4.329 4.329 0 0 1-1.32-1.32c-.336-.56-.52-1.256-.552-2.088h3.24zm12.555-10.296h-3.408v-2.808h3.408v2.808zm-3.408 1.92h3.408V28h-3.408V15.592zm10.675 9.48c.48 0 .904-.096 1.272-.288a2.66 2.66 0 0 0 .912-.768c.24-.32.416-.68.528-1.08.128-.416.192-.848.192-1.296 0-.512-.048-.992-.144-1.44a3.626 3.626 0 0 0-.48-1.224 2.485 2.485 0 0 0-.888-.84c-.368-.208-.832-.312-1.392-.312-.48 0-.896.096-1.248.288a2.709 2.709 0 0 0-.864.792c-.224.32-.392.696-.504 1.128a5.856 5.856 0 0 0-.144 1.32c0 .448.04.896.12 1.344a4 4 0 0 0 .456 1.176c.224.352.512.64.864.864.352.224.792.336 1.32.336zm6.144 2.136c0 .496-.072 1.064-.216 1.704a4.003 4.003 0 0 1-.864 1.776c-.448.56-1.096 1.032-1.944 1.416-.848.384-1.984.576-3.408.576-.608 0-1.232-.08-1.872-.24a5.846 5.846 0 0 1-1.728-.696 4.375 4.375 0 0 1-1.296-1.248c-.336-.496-.528-1.096-.576-1.8h3.384c.16.64.472 1.08.936 1.32.464.256 1 .384 1.608.384.96 0 1.656-.288 2.088-.864.448-.576.664-1.304.648-2.184V25.72h-.048a3.43 3.43 0 0 1-1.584 1.464 5.123 5.123 0 0 1-2.136.456c-.928 0-1.728-.16-2.4-.48a4.723 4.723 0 0 1-1.656-1.344 5.908 5.908 0 0 1-.96-1.992 9.96 9.96 0 0 1-.288-2.424c0-.8.112-1.568.336-2.304a6.069 6.069 0 0 1 1.032-1.968c.448-.576 1-1.032 1.656-1.368.672-.336 1.44-.504 2.304-.504.816 0 1.528.152 2.136.456.624.304 1.144.816 1.56 1.536h.048v-1.656h3.24v11.616zm1.544-11.616h3.24v1.728h.072c.432-.72.992-1.24 1.68-1.56a4.763 4.763 0 0 1 2.112-.504c.912 0 1.656.128 2.232.384.592.24 1.056.584 1.392 1.032.336.432.568.968.696 1.608.144.624.216 1.32.216 2.088V28h-3.408v-7.008c0-1.024-.16-1.784-.48-2.28-.32-.512-.888-.768-1.704-.768-.928 0-1.6.28-2.016.84-.416.544-.624 1.448-.624 2.712V28h-3.408V15.592z" fill="white"/></g>
+                    <defs>
+                        <clipPath id="a">
+                            <rect width="313" height="37" fill="white"/>
+                        </clipPath>
+                    </defs>
+                </svg>
+            </a>
+            <a href="../contact.html" class="btn-primary">Contact</a>
+        </div>
+    </header>
+
+    <main class="content-archive-section">
+        <div class="container">
+            <header class="content-header">
+                <div class="card-meta" id="content-meta">
+                    <!-- Dynamically populated -->
+                </div>
+
+                <h1 class="section-title" id="content-title">
+                    <span>Loading...</span>
+                </h1>
+            </header>
+
+            <!-- Video container (hidden by default, shown for video content) -->
+            <div class="content-video" id="content-video" style="display: none;">
+                <div class="glass-card">
+                    <iframe id="video-iframe" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <article class="content-body" id="content-body">
+
+                <p>If you're lucky, you'll work with lots of people over the course of your career who will make you better at your job. The ones who make you a better person, they are much fewer and farther between.</p>
+
+                <p>I was invited here today to talk about Data Storytelling, but I can't talk about stories, unless I talk about people. And because everything we create is a little bit autobiographical, let me tell you about myself.</p>
+
+                <div class="text-with-accent">
+                    <div class="line-accent"></div>
+                    <p>"It is important to tell at least from time to time the secret of who we truly and fully are because otherwise we run the risk of losing track of who we are and little by little come to accept instead the highly edited version which we put forth in hope that the world will find it more acceptable than the real thing. It is important to tell our secrets too because it makes it easier... for other people to tell us a secret or two of their own."<a id="src1" href="#fn1" class="footnote-link">Telling Secrets: A Memoir</a></p>
+                </div>
+
+                <p>All of my life I think I've been a designer, because designers are legendary problem finders. This makes us good at our work, but strange around people, because <strong>we can find something wrong with almost anything.</strong><a id="src2" href="#fn2" class="footnote-link">2</a></p>
+
+                <h3>Career Evolution</h3>
+
+                <div class="slide-image">
+                    <img src="images/designing-data-stories/career evolution.png" alt="Career Evolution slide" />
+                </div>
+
+                <p>I started really young, designing web applications. Programming gave me an outlet to express myself. I felt like I was being invited to rebuild a corner of the world, one business at a time. And when you're really young, unqualified and uncredentialed, it's a rush. There's this balance between insecurity and excitement, in you're head, you're thinking <strong>"are they really letting me do this?!"</strong></p>
+
+                <p>But many web applications are simply codifications of a business model, understanding the dynamics between inputs and outputs, people and systems. So instead of just enabling businesses, I was helping to architect the businesses.</p>
+
+                <p>And when businesses start to scale, they need organizational structures to support that growth. They also need catalysts to help guide the transformation, because change can be scary. That's why information architecture is so important to understand, it takes a complicated world and shrinks it down to something manageable.</p>
+
+                <p>Which led me to designing analytics systems, because whenever you invest in change, you want to measure the results. But that makes it sound easy, measurement sounds like quantification. <strong>But for humans, results are less about numbers, it's about what numbers mean, and finding meaning is what our life's journey is about.</strong></p>
+
+                <p>So the first thing I want to tell you about a story, is that it starts somewhere and it goes somewhere, the journey is more important than the destination, because the story is told in a way that you don't know how it will end. The story is a problem unfolding, the solution is just a part of it.</p>
+
+                <h3>Design as Problem Solving</h3>
+
+                <p>It can be said that <strong>"all knowledge work is design."</strong> You are a designer.</p>
+
+                <div class="text-with-accent">
+                    <div class="line-accent"></div>
+                    <p>"Design is simply problem solving... It's about understanding a challenge and creating a solution for that challenge. The ONLY way to do this is to REALLY understand the challenge - to unearth that underlying need behind the challenge."<a id="src3" href="#fn3" class="footnote-link">Stakeholder Whispering</a></p>
+                </div>
+
+                <p>A moment ago, I mentioned that designers are problem finders, we are gifted with the ability to find flaws in things so they can be fixed. A more positive way to look at this ability is by labeling it idealism. We are positive that everything can be improved, a powerful belief fueling the way we look at the world. The risk, however, is that idealism can lead us into self-limiting arguments that work against progress and frustrate everyone.<a id="src4" href="#fn4" class="footnote-link">4</a></p>
+
+                <p>It can also make us look naive.</p>
+
+                <p>Why wouldn't people want to fix the problems we've identified? Why hire smart and talented people and then not listen to them?</p>
+
+                <p>This isn't another talk about choosing the right charts or simplifying your slides. It's about recognizing that every data conversation is actually three conversations:</p>
+
+                <div class="dramatic-list">
+                    <div class="list-item">What the data says</div>
+                    <div class="list-item">What people hear</div>
+                    <div class="list-item">What they're willing to do about it.</div>
+                </div>
+
+                <p>As experts, there's a gap between what we're great at doing and what we're great at explaining. Until we get better at the story part of our jobs, we'll be stuck.</p>
+
+                <h3>The Ego Trap</h3>
+
+                <div class="text-with-accent">
+                    <div class="line-accent"></div>
+                    <p>Are you tired of:</p>
+                    <ul>
+                        <li>Having your ideas ignored and misunderstood</li>
+                        <li>Being involved late in important decisions</li>
+                        <li>Feeling undervalued in your organization</li>
+                        <li>Needing to explain or justify your role</li>
+                        <li>Feeling frustrated that powerful people seem ignorant about your discipline</li>
+                        <li>Feeling defeated that nothing ever changes</li>
+                        <li>These problems are not your fault.</li>
+                    </ul>
+                    <p>You entered this career expecting something different... We call the cause of these feelings the ego trap: the belief that because you are an expert, you should be the creative hero in the story of your organization. If you feel stuck, or you know others who feel this way, this trap explains why.<a id="src5" href="#fn5" class="footnote-link">Why Design is Hard</a></p>
+                </div>
+
+                <h3>Incorrect Expectations</h3>
+
+                <div class="text-with-accent">
+                    <div class="line-accent"></div>
+                    <p>To get to the point, we've cultivated unrealistic, unspoken, and incorrect expectations about most workplaces, including:</p>
+                    <ul>
+                        <li>Our expertise is already valued and leaders know how to leverage it</li>
+                        <li>There is a healthy process for making decisions</li>
+                        <li>The organization is free from ... political tensions</li>
+                        <li>People will readily give up the favorite parts of their jobs to us</li>
+                        <li>People will readily give up their sense of heroship and its rewards</li>
+                        <li>Leaders will quickly trust us with strategic decisions</li>
+                        <li>Old, self-reinforcing, and biased systems of incentives will change upon our arrival<a id="src6" href="#fn6" class="footnote-link">Why Design is Hard</a></li>
+                    </ul>
+                </div>
+
+                <p>Among its many sweet poisons, the ego-trap assumes that all organizations have healthy, collaborative cultures by default. It is never explained that most organizations, like families, are dysfunctional in at least one major way,<a id="src7" href="#fn7" class="footnote-link">7</a> they have a weakness, because they're interdependent.</p>
+
+                <p>We require each other to solve problems and to understand what problems need to be solved. That's why communication is so important.</p>
+
+                <p>If we keep hoping someone will magically appear to save us from the responsibility of persuading people to see the value in our skills and contributions,<a id="src8" href="#fn8" class="footnote-link">8</a> we will be disappointed.</p>
+
+                <h3>Mental Models and Communication</h3>
+
+                <p>Expecting the world to change to suit us is not realistic. Instead, we need to have a better mental model for how our work fits into the world.<a id="src9" href="#fn9" class="footnote-link">9</a></p>
+
+                <p>Changing people's minds, as challenging as it is, must therefore be a skill any person serious about their ideas needs to learn.<a id="src10" href="#fn10" class="footnote-link">10</a></p>
+
+                <div class="text-with-accent">
+                    <div class="line-accent"></div>
+                    <p>"Every one of us is human... We try to be analytical, reasonable, and fact-based, but the truth is that we're all emotional, irrational, and unpredictable. It is, quite simply, impossible to create an impartial and objective truth. Yet, we frequently portray data and analytics as serving the sole purpose of 'fact-based decision-making and presenting data as the final and inarguable truth.'"<a id="src11" href="#fn11" class="footnote-link">Humanizing Data Strategy</a></p>
+                </div>
+
+                <p>Yet every individual is different, valuing different things and weighting those values differently. It's our job to uncover the value our stakeholders are seeking and work from there toward a solution.<a id="src12" href="#fn12" class="footnote-link">12</a></p>
+
+                <div class="text-with-accent">
+                    <div class="line-accent"></div>
+                    <p>"The truth is, all design is subjective. What one person likes, another person hates. What seems obvious to me might not be obvious to you. What works in one context could fail miserably in another."<a id="src13" href="#fn13" class="footnote-link">Articulating Design Decisions</a></p>
+                </div>
+
+                <div class="text-with-accent">
+                    <div class="line-accent"></div>
+                    <p>"Everything we design has another way of doing it. For each design we create, there is an alternate, often opposing, way of solving the same problem. This is the reason why we have disagreements about the solutions to begin with and a key problem with articulating design decisions."<a id="src14" href="#fn14" class="footnote-link">Articulating Design Decisions</a></p>
+                </div>
+
+                <p>To be successful, you have to figure out how to communicate what your work does. You have to answer questions in a way that make sense to your stakeholders, not yourself. You have to express the rationale behind a design using words that would appeal to them and meet their needs.<a id="src15" href="#fn15" class="footnote-link">15</a></p>
+
+                <p>If you think your work is only about data, pipelines, or pixels, then you have a different agenda than your stakeholders, because your stakeholders are looking for value.</p>
+
+                <h3>Transcendent Language</h3>
+
+                <p>What is value?</p>
+
+                <p><strong>It's a suitcase word, you have to unpack it to understand what's inside.</strong></p>
+
+                <p>It's what could be called transcendent language. My favorite example to use is "wealth."</p>
+
+                <p>I'm going to give you a few seconds to think of what it means to you.</p>
+
+                <p>Is it some dollar amount threshold that you finally pass?<br>
+                Is it about time with your family and friends?<br>
+                Is it about physical health?<br>
+                Or is it about freedom, a link to more transcendent language?</p>
+
+                <p>All of these could be right, to you, because you personally are defining it. I could have chosen a word like "successful", "better", "efficient", or "happiness".</p>
+
+                <p>Which makes language this slippery thing, because although we might share the same symbol or word, we assume we're talking about the same thing.</p>
+
+                <p>There's a famous 1964 US Supreme Court ruling attempting to define obscenity, by saying "I'll know it when I see it".</p>
+
+                <p><strong>Which is exactly the answer that's so frustrating to all of us when we're getting feedback from a stakeholder, because they're lacking the language to describe what they want, but they know what you just showed them isn't it.</strong></p>
+
+                <h3>Value Defining Process</h3>
+
+                <p>Language is an approximation.</p>
+
+                <p>Language compresses reality. Compression is useful for coordination and memory, but it always loses information. That's why we say the map is not the territory. The words or a graph that you use to describe something, is not the thing. So to be able to communicate, we have to learn to code and decode using the language of our stakeholders or teach them our language.</p>
+
+                <p>This is what I call a Value Defining Process.</p>
+
+                <p>It often starts with a request or the availability of new data, our very transactionally minded project management brain put us in this "Requirement Gathering" phase. Which sounds like we're collecting facts. Like we're designing a box of a certain size and shape, but it doesn't matter what goes in there, because we're only responsible for the box.</p>
+
+                <p>If you just solve the problem that's asked of you, then you're probably solving the wrong problem. Which raises the question, "does scope creep or does understanding grow?"</p>
+
+                <p>To solve the right problem, we have to help people externalize their thinking and create a feeling of intellectual intimacy, so they know we're talking about the same thing.</p>
+
+                <p>We do this first by listening.</p>
+
+                <div class="text-with-accent">
+                    <div class="line-accent"></div>
+                    <p>"Many of us listen mostly waiting for breaks in the other person's flow, which we perceived as opportunities to throw in our two cents. We spend more of our time and effort planning our response to what's being said rather than listening and thinking about what's being said in the first place. This is usually obvious to the other person. And it is devaluing to them, whether they're conscious of it or not."<a id="src16" href="#fn16" class="footnote-link">Stakeholder Whispering</a></p>
+                </div>
+
+                <div class="text-with-accent">
+                    <div class="line-accent"></div>
+                    <p>"When people are listened to sensitively, they tend to listen to themselves with more care and to make clear exactly what they are feeling and thinking."<a id="src17" href="#fn17" class="footnote-link">Stakeholder Whispering</a></p>
+                </div>
+
+                <p>Everything you hear is filtered through your reference set of experiences. Every book you've ever read, every conversation you've ever had, every belief you have creates a network of symbology that interprets the signals you receive from the world.</p>
+
+                <p>Like a personal ETL, the data pipeline of what you hear or read is transformed into something that's intelligible to you, whether it's what they meant or not.</p>
+
+                <p>Because, we live in a model of the world, it's not reality. <strong>Our experiences determine what we notice.</strong></p>
+
+                <h3>Perspective and Bias</h3>
+
+                <div class="text-with-accent">
+                    <div class="line-accent"></div>
+                    <p>"What we do see depends mainly on what we look for.... In the same field the farmer will notice the crop, the geologists the fossils, botanists the flowers, artists the colouring, sportsmen the cover for the game. Though we may all look at the same things, it does not all follow that we should see them." <a id="src18" href="#fn18" class="footnote-link">The Beauties of Nature and the Wonders of the World We Live in</a></p>
+                </div>
+
+                <p>The reality in our head feels so convincing, we assume it's shared.</p>
+
+                <p>Our experience of the world is naturally biased. We tune our sense to what our existing concepts consider important.<a id="src19" href="#fn19" class="footnote-link">19</a></p>
+
+                <p>Which means, most people are on autopilot.</p>
+
+                <div class="text-with-accent">
+                    <div class="line-accent"></div>
+                    <p>"There is a gap in our thinking that comes from believing that the way we see the world is the way the world really works. It's only when we change our perspective—when we look at the situation through the eyes of other people—that we realize what we're missing. We begin to appreciate our own blind spots."<a id="src20" href="#fn20" class="footnote-link">Clear Thinking</a></p>
+                </div>
+
+                <p>We have to establish a schema, a model of the world and the problem we're facing, at the level of detail that gives us the most clarity and ensures that we're describing the same reality.</p>
+
+                <p>Here's a visual example.</p>
+
+                <h3>Anscombe's Quartet</h3>
+
+                <div class="slide-image">
+                    <img src="images/designing-data-stories/anscombes quartet.png" alt="Anscombe's Quartet slide" />
+                </div>
+
+                <p>Anscombe's Quartet are four datasets constructed to demonstrate the importance of graphing data when analyzing it. It challenges the assumption that numerical calculations are exact, but graphs are rough.</p>
+
+                <p>I sourced this image, if I would have made it myself, I wouldn't use a gradient background, colors for the marks, or show the axis, because you would have gotten the point.</p>
+
+                <p>All four datasets have the same summary statistics: Same Means, Same Variances, Same Correlation Coefficient, Same Regression Line.</p>
+
+                <p>But when you look at it, you see four different stories.</p>
+
+                <p>So if the level of your language and investigation only goes deep enough to summarize, what are you missing?</p>
+
+                <p>I want to inspire you to develop another set of eyes, the eyes of your stakeholder.</p>
+
+                <p>But how do we do this when we're divided by so much?</p>
+
+                <h3>Generalist and Specialist</h3>
+
+                <div class="slide-image">
+                    <img src="images/designing-data-stories/generalist specialist.png" alt="Generalist and Specialist slide" />
+                </div>
+
+                <p>Specialization is what separates you from people, that's the cost, the benefit is how it can profit those that you were separated from.</p>
+
+                <p>Since context is the most expensive thing in an organization, it's no surprise that you were excluded from some meetings or not brought in earlier. Having a hundred people in a project meeting is annoying and unproductive.</p>
+
+                <div class="text-with-accent">
+                    <div class="line-accent"></div>
+                    <p>"For the greater part of the past 50 years, data has been primarily entrusted to only two privileged groups within most business organizations: an executive who required data to manage the business; or a data specialist ... For everyone else, exposure to data has been fairly limited, indirect, or intermittent. In today's digital age, data has become more pervasive, exposing more people to facts and figures than ever before."<a id="src21" href="#fn21" class="footnote-link">Effective Data Storytelling</a></p>
+                </div>
+
+                <p>Who owns knowledge, learning or communication within a company? It is increasing obvious that analytics is overlapping with other disciplines and the singularity of pieces chosen for analytics de-holizes and delegitimizes its relation to the rest of the organization.</p>
+
+                <p><strong>With analytics, there's more confusion about who does what, because there are more overlaps in who CAN do what.</strong> Part of the separation can be technical, the tools we use. But this is temporary.</p>
+
+                <p>Innovation builds upon itself with compounding effects, while cultural change requires shifts in collective human behavior, belief systems, and institutional structures - all of which typically move more slowly and face various forms of resistance.</p>
+
+                <p>There's a tendency for people to think of what they do as hard and what others do as easy.</p>
+
+                <h3>Systems and Decision Making</h3>
+
+                <p>When we look at our workplaces in terms of systems, it's easier to see that the friction we experience is probably an efficiency for someone else, usually someone more powerful than we are.<a id="src22" href="#fn22" class="footnote-link">22</a></p>
+
+                <p>Somehow we've forgotten that we often define analysis as separate from the act of deciding. What we call analysis is mostly advising. We make things as suggestions for other powerful people ... and they make the decisions.<a id="src23" href="#fn23" class="footnote-link">23</a></p>
+
+                <p>When experts make diagrams about how decisions should fit into an organization, their expertise is usually at the center, much to the dismay of everyone else. In most organizational cultures, the natural stars are the jobs that have been there longest.<a id="src24" href="#fn24" class="footnote-link">24</a></p>
+
+                <p><strong>Efforts to visualize reality across teams will often trigger a threat response.</strong> It feels logical, but emotions and agendas tend to surface quickly when people feel seen—or exposed. But this surrender is dangerous.</p>
+
+                <p>We know from psychological research that authority figures can literally make your brain stop working. Once a legitimate authority has given an order, subordinates stop thinking in the situation and start reacting.<a id="src25" href="#fn25" class="footnote-link">25</a></p>
+
+                <p>Here's an anecdote:</p>
+
+                <h3>The "R ear" Story</h3>
+
+                <div class="text-with-accent">
+                    <div class="line-accent"></div>
+                    <p>"A physician ordered ear drops to be administered to the right ear of a patient suffering pain and infection there. But instead of writing out completely the location 'right ear' on the prescription, the doctor abbreviated it so that the instructions read 'place in R ear.' Upon receiving the prescription, the duty nurse promptly put the required number of ear drops into the patient's anus."<a id="src26" href="#fn26" class="footnote-link">Influence: The Psychology of Persuasion</a></p>
+                </div>
+
+                <p>This is the cost of subordination (and abbreviations).</p>
+
+                <p>So instead of remaining in our ivory towers, we have to participate in business discussions, we have to understand how power works in our organization.</p>
+
+                <h3>Bureaucracy and Politics</h3>
+
+                <div class="slide-image">
+                    <img src="images/designing-data-stories/bureaucracy politics.png" alt="Bureaucracy and Politics slide" />
+                </div>
+
+                <div class="text-with-accent">
+                    <div class="line-accent"></div>
+                    <p>In some cases, a simplistic black-and-white way of looking must be abandoned for nuanced shades of grey. Mostly, there are no good guys or bad guys, just a lot of complicated people. This kind of orientation steps us closer to the complexity of reality. Suddenly, something that used to be simple is now hard. We feel pushed toward chaos. There is a loss of confidence as we sense a weaker agency to figure things out and get things done. Facing the facts sometimes means feeling less assured about your place in the world.</p>
+
+                    <p>To influence, evidence must interface with belief systems. Facts compete against long-rooted ways of thinking about the world. As we saw with storytelling, the brain is built for survival, not truth.</p>
+
+                    <p>If we are to be truth-dealers, we need to negotiate with survival-seeking brains. And our brains are not built to survive on their own. We are built to thrive in groups. We become dedicated to alliances with others who see like us. Sometimes in life, tribes beat facts.</p>
+
+                    <p>We reject certain facts because we want to belong.</p><a id="src27" href="#fn27" class="footnote-link">Info We Trust</a></p>
+                </div>
+
+                <p>Bureaucracy and Politics are two different ways that power is created and managed. Finding a balance between these two strategies is a wave that every organization is riding.</p>
+
+                <p>Bureaucracy is standardizing a process, creating gates of approval flows. This is typically more efficient for procedures that are familiar and don't change very often. They are rule based systems.</p>
+
+                <p>Politics however, is personality and relationship driven. This offers a more flexible means to distribute power and make decisions, but they are inconsistent and unstable.</p>
+
+                <p>Politics without bureaucracy is chaos. Bureaucracy without politics is stagnant.</p>
+
+                <p><strong>The impulse, when things seem to go wrong, is to overcorrect.</strong></p>
+
+                <p>Overcorrect by becoming too bureaucratic and you can't respond quickly enough. Overcorrect by becoming too political and you can't respond consistently enough.</p>
+
+                <p>And when either of those things happen, you lose funding because you cease to deliver value.</p>
+
+                <p>That's why analytics is dangerous, <strong>we make the tools to keep score.</strong></p>
+
+                <h3>Pause</h3>
+
+                <div class="slide-image">
+                    <img src="images/designing-data-stories/pause.png" alt="Pause slide" />
+                </div>
+
+                <p>So let's take an inventory of what we've talked about so far and where I plan to take you from here. Let's come up for air, so you have a moment to integrate what you've heard. And now that you've experienced part of the territory that I'm taking you on a tour of, I can show you part of the map, for the territory you haven't experienced yet.</p>
+
+                <p>I started talking about what can be referred to as "Gravity Problems", these are all the things you might be tired of and why you might feel you have been set up to fail. They're called "Gravity Problems", because you can't change them, you have to change yourself.</p>
+
+                <p>Then I described "Transcendent Language" and the kind of nesting doll aspect of language, where you can just keep unpacking it and finding personal definitions for words and situations.</p>
+
+                <p>I then explained that the way to understand transcendent language is a "value defining process" where you try to create a shared sense of reality with another individual.</p>
+
+                <p>In Generalists and Specialists, I tried to explain that the gap between your realities is both intentional and unfortunate. Specialists are compartmentalized so they have the energy to go deep, whereas generalists are denied depth and are forced understand the world through summary.</p>
+
+                <p>Bureaucracy and Politics are two sides of the same coin. They are organizational strategies to manage change, not just control power, even though it might feel like it.</p>
+
+                <p>So the next thing I want to explain are business strategies. These are about how value is captured using arbitrage and speculation.</p>
+
+                <p>Once you understand that, we'll talk about designing your data story, presenting it, and receiving feedback.</p>
+
+                <p>I'll close with recommendations you can start to apply in your own life.</p>
+
+                <p>Now back to the show.</p>
+
+                <h3>Arbitrage and Speculation</h3>
+
+                <div class="slide-image">
+                    <img src="images/designing-data-stories/arbitrage speculation.png" alt="Arbitrage and Speculation slide" />
+                </div>
+
+                <p>Arbitrage is buying low in one market and selling high in another.</p>
+
+                <p>Manufactures profit from arbitrage by investing labor in the transformation of raw goods. Services profit from arbitrage by paying people less to perform labor than the market is willing to pay them to get it done.</p>
+
+                <p>The companies are the interface with the market, to transform demand into supply.</p>
+
+                <p>Speculation is investing in a version of the future, predicting that demand will be higher, so accumulate the mechanisms of supply now. The hope is that you've found something early and undervalued, and by controlling the scarcity of supply you are able to profit from demand.</p>
+
+                <p>All sustainable business models are a combination of both of these strategies. The role of analytics is to help optimize a business's exposure to risk, so their investment is profitable.</p>
+
+                <p>The instinct for a human in this situation to get their idea funded, is to understate the cost of supply and overstate the demand.</p>
+
+                <p>As analytics professionals, the pressure to be complicit and lean in either of these directions is fierce. Neutrality is the most difficult position, because the performance of the business has an effect on you too.</p>
+
+                <p><strong>The better the business does, the happier people seem and the more likely investment will continue and expand operations.</strong></p>
+
+                <p>However, there's a catch. Whenever there's money to be made, there's competition for it. That means the opportunity in the market is quickly satisfied, until an equilibrium is met. We call this an efficient market. There are always diminishing returns, that's why innovation and optimization are important. They disrupt the business cycle by reducing the cost of production or increase the profit on consumption. Nothing is static, this is a dance.</p>
+
+                <p>So the cycle you will feel is between these two modes:</p>
+
+                <div class="dramatic-list">
+                    <div class="list-item">Substitute people for a lack of process</div>
+                    <div class="list-item">Substitute process for a lack of people</div>
+                </div>
+
+                <p>Investment in innovation can drive the hiring of more sophisticated technicians. Investment in process can reduce the requirement for people, meaning those people can work in other parts of the business, finding new efficiencies that can be commoditized into procedure.</p>
+
+                <p>Knowing this is important for you.</p>
+
+                <p>Generalists are portfolio managers. They have to be dispassionate about their investments and diversify their holdings, to hedge against market uncertainty. They will be careful not to disrupt themselves.</p>
+
+                <p>Producing more analytical deliverables, better and cheaper is not a priority, what is a priority is making the right investments in the product to afford to continue doing business. <strong>No one cares about your analytics deliverable unless it is helping to steer the business in a direction people can feel confident about going.</strong></p>
+
+                <p>Now you're ready to design a data story.</p>
+
+                <h3>Designing, Presenting and Receiving Feedback</h3>
+
+                <p>You've worked with the stakeholder to understand the problem by learning a new language and seeing through their eyes. You listen to what isn't being said and catalog the silent evidence. Your job isn't just analyzing what's measured, but also understanding what's deliberately not measured and why.</p>
+
+                <p>You ask them to describe failure and success.</p>
+
+                <p>You dig deep enough into their logic to understand what's been borrowed, but not understood. This is important, because often times our stakeholders will repeat things that have been told to them, but that they don't have the depth to explain themselves. When you ask for a deeper explanation, they get frustrated and say that's just the way it is.</p>
+
+                <p><strong>When you ask people how business works, they reference markets and competition. When you ask them about their own organization, they talk about politics and dysfunction.</strong> This is because there's an asymmetry of information, they know in generalities how the business might work, but they know specifically what their day looks like.</p>
+
+                <p>Now you're at your workstation, crafting the story. You have 100 oysters to open, but you know your audience only needs to see the two pearls.</p>
+
+                <div class="text-with-accent">
+                    <div class="line-accent"></div>
+                    <p>"Too often, people err and think it's OK to show exploratory analysis (simply present the data, all 100 oysters) when they should be showing explanatory (taking the time to turn the data into information that can be consumed by an audience: the two pearls)."<a id="src28" href="#fn28" class="footnote-link">Storytelling with Data</a></p>
+                </div>
+
+                <p>The temptation is to show all your work, to justify the time spent.</p>
+
+                <div class="text-with-accent">
+                    <div class="line-accent"></div>
+                    <p>"After undertaking an entire analysis, it can be tempting to want to show your audience everything, as evidence of all of the work you did and the robustness of the analysis. Resist this urge. You are making your audience reopen all of the oysters!"<a id="src29" href="#fn29" class="footnote-link">Storytelling with Data</a></p>
+                </div>
+
+                <p>The story you design isn't just about the data, it's about translating between worlds. You're taking what you've discovered in your specialist depths and bringing it to the surface where generalists can see it, touch it, use it, and argue about it. This translation is the hardest part, because you have to forget how much you know. You have to remember what it was like before you understood.</p>
+
+                <div class="text-with-accent">
+                    <div class="line-accent"></div>
+                    <p>"The one and only reason people get nervous when they present work is because they are designed that way. Your amygdala, which is the part of your brain in charge of keeping you alive, senses a presentation as a threat. Quite simply, there are more eyeballs staring at you than you have staring back at them. This triggers a flight or fight response which releases adrenaline into your system."<a id="src30" href="#fn30" class="footnote-link">Design is a Job</a></p>
+                </div>
+
+                <p>This is normal. This is your body working exactly as designed.</p>
+
+                <div class="text-with-accent">
+                    <div class="line-accent"></div>
+                    <p>"Most successful executives have developed an ability to be in a state of high limbic system arousal and still remain calm. Partly this is their ability to label emotional states... Stress is not necessarily a bad thing. It's how you deal with it that's key."<a id="src31" href="#fn31" class="footnote-link">Your Brain at Work</a></p>
+                </div>
+
+                <p>But here's what you're really up against: feedback theater.</p>
+
+                <p>You'll encounter courtesy bias, where "I'm confused" really means "I don't agree," but sounds more polite. You'll face the tendency for critical to be seen as smarter, the "brilliant but cruel" phenomenon where tearing something down appears more intellectual than building it up.</p>
+
+                <div class="text-with-accent">
+                    <div class="line-accent"></div>
+                    <p>"Your first job is to separate the actionable feedback from the non-actionable feedback. Sometimes stakeholders just like to document their thought process. Your job is to sift through and find the actionable from the non-actionable."<a id="src32" href="#fn32" class="footnote-link">Design is a Job</a></p>
+                </div>
+
+                <div class="text-with-accent">
+                    <div class="line-accent"></div>
+                    <p>"If someone chooses to share feedback, listen to understand the person, not the work. People will tell you more about themselves than about the work when giving feedback. We each see a unique world."<a id="src33" href="#fn33" class="footnote-link">The Creative Act</a></p>
+                </div>
+
+                <p>In these situations, you tend to think somebody does something to you, but really what they're doing is, they're doing what they're doing while they're in front of you. We just happen to notice and feel vulnerable.</p>
+
+                <div class="text-with-accent">
+                    <div class="line-accent"></div>
+                    <p>"The trouble with people is that we're all so unpredictable and yet so incredibly predictable at the same time. Often the people in your meetings are dealing with things, in both their personal and professional lives, which are more important to them than your current project. People are too busy (or at least they think they are). 'I have too many things going on right now,' or 'I have to get to another meeting,' or 'I've got to make this deadline.' Whatever the case, a lot of people you need help from are not always focused on the thing you want them to be. More than that, their attitudes and responses to your work might have more to do with the things happening outside of this meeting than what you're showing them."<a id="src34" href="#fn34" class="footnote-link">Articulating Design Decisions</a></p>
+                </div>
+
+                <div class="text-with-accent">
+                    <div class="line-accent"></div>
+                    <p>"Like all animals, we are naturally prone to defend our territory. We might not be defending a piece of terrain on the African savanna, but territory isn't just physical, it's also psychological. Our identity is part of our territory too. When someone criticizes our work, status, or how we see ourselves, we instinctively shut down or defend ourselves."<a id="src35" href="#fn35" class="footnote-link">Clear Thinking</a></p>
+                </div>
+
+                <p>Anger at a rival prevents you from doing what's in your own best interest. Fear of losing an opportunity pushes you to cut thinking short and act impulsively. Outrage at a criticism causes you to lash out in defense, alienating potential allies.<a id="src36" href="#fn36" class="footnote-link">36</a></p>
+
+                <h3>The Antidote</h3>
+
+                <div class="text-with-accent">
+                    <div class="line-accent"></div>
+                    <p>"Our desire to feel right overpowers our desire to be right. The ego default urges us to feel right at the expense of being right. Few things feel better than being right - so much so that we will unconsciously rearrange the world into arbitrary hierarchies to maintain our beliefs and feel better about ourselves."<a id="src37" href="#fn37" class="footnote-link">Clear Thinking</a></p>
+                </div>
+
+                <p>The antidote is remembering that you're not just presenting, you're hosting a venue for someone else's argument. You're giving them tools to have conversations you'll never be in. Do you want to influence people or do you want a compliment?</p>
+
+                <div class="text-with-accent">
+                    <div class="line-accent"></div>
+                    <p>"Sometimes you have to relent and allow your stakeholders to make changes even when you're opposed to them, maybe only because you need to make a deposit in the relationship bank. The important thing is that you're learning which battles are worth fighting."<a id="src38" href="#fn38" class="footnote-link">Articulating Design Decisions</a></p>
+                </div>
+
+                <p>Stakeholder reactions to our design work often have an underlying situational explanation that we might never know about.<a id="src39" href="#fn39" class="footnote-link">39</a></p>
+
+                <div class="text-with-accent">
+                    <div class="line-accent"></div>
+                    <p>"When you find and share important insights, you want them to be understood and embraced by your intended audience. However, no matter how strong or sound your data is, there's no guarantee it will resonate in their minds... When we read dry, factual arguments, we read with our dukes up. We are critical and skeptical. But when we are absorbed in a story we drop our intellectual guard."<a id="src40" href="#fn40" class="footnote-link">Effective Data Storytelling</a></p>
+                </div>
+
+                <p>I hope I've been able to get you to drop your guard.</p>
+
+                <h2 class="content-subtitle"><span>Recommendations</span></h2>
+
+                <div class="slide-image">
+                    <img src="images/designing-data-stories/Recommendations.png" alt="Recommendations slide" />
+                </div>
+
+                <h3>Practice Listening</h3>
+
+                <p>Yes, it's a cliché, but it's a cliché for a reason. As you get older you'll realize the truth in all of the platitudes you were annoyed by when you were younger.</p>
+
+                <p>Here's what I'd like you to experiment with: You and a partner each take three minutes to speak while the other listens closely. No interrupting, no planning your response. Just look at the person in the eyes and listen.</p>
+
+                <h3>Expand Your Reference Set</h3>
+
+                <p>Invest in deeper material. Read beyond blog posts and LinkedIn self-promotion. Find something you can concentrate on and practice dedicating your attention for longer periods of time.</p>
+
+                <h3>Journal</h3>
+
+                <p>Get everything out of your head, everyday. It doesn't matter if you'll ever read it again. Part of processing your experience is digesting and purging it. This is my number one bit of advice for anyone that's ever lost sleep because their brain won't let go.</p>
+
+                <h3>Relax Your Status-Seeking Brain</h3>
+
+                <p>The constant comparison of where you stand relative to others is exhausting and it's lying to you. Status is temporary and situational. The person that says "nice guys finish last" doesn't know where the finish line is.</p>
+
+                <h3>Be a Better Person</h3>
+
+                <p>This sounds naive until you realize it's the only thing fully in your control. Develop the patience to think about what kind of person you want to be. Make it intentional. Mature. Not just technically, but emotionally. Learn to separate your worth from your work.</p>
+
+                <p>In the end, we're all writing our own creation myth. The story we tell ourselves about who we are, why we're here, what our work means.</p>
+
+                <p>Because that's what this is really about. Not the data, not the charts, not the models. It's about helping people navigate complexity with clarity. It's about being the bridge between what is and what could be.</p>
+
+                <p><strong>And that's a story worth telling.</strong></p>
+
+
+                <div class="footnotes-section">
+                    <h2 class="content-subtitle"><span>Citations</span></h2>
+                    
+                    <div class="footnote">
+                        Andrews, RJ. <a href="https://www.amazon.com/Info-We-Trust-Inspire-World/dp/1119483891" target="_blank">Info We Trust</a>. <a id="fn19" href="#src19">p37</a>, <a id="fn27" href="#src27">p170</a>
+                    </div>
+                    
+                    <div class="footnote">
+                        Berkun, Scott. <a href="https://www.amazon.com/Why-Design-Hard-Scott-Berkun/dp/0983873194" target="_blank">Why Design is Hard</a>. <a id="fn2" href="#src2">p1</a>, <a id="fn5" href="#src5">p9</a>, <a id="fn9" href="#src9">p11</a>, <a id="fn22" href="#src22">p13</a>, <a id="fn24" href="#src24">p15</a>, <a id="fn6" href="#src6">p18</a>, <a id="fn7" href="#src7">p19</a>, <a id="fn4" href="#src4">p24</a>, <a id="fn10" href="#src10">p25</a>, <a id="fn8" href="#src8">p28</a>, <a href="#fn22">p65</a>
+                    </div>
+                    
+                    <div class="footnote">
+                        Buechner, Frederick. <a href="https://www.amazon.com/Telling-Secrets-Frederick-Buechner/dp/0060609362" target="_blank">Telling Secrets: A Memoir</a>. <a id="fn1" href="#src1">p#</a>
+                    </div>
+                    
+                    <div class="footnote">
+                        Cialdini, Robert. <a href="https://www.amazon.com/Influence-Psychology-Persuasion-Robert-Cialdini/dp/006124189X" target="_blank">Influence: The Psychology of Persuasion</a>. <a id="fn25" href="#src25">p#</a>, <a id="fn26" href="#src26">p#</a>
+                    </div>
+                    
+                    <div class="footnote">
+                        Dykes, Brent. <a href="https://www.amazon.com/Effective-Data-Storytelling-Driven-Results/dp/1119615712" target="_blank">Effective Data Storytelling</a>. <a id="fn21" href="#src21">p5</a>, <a id="fn40" href="#src40">p70</a>
+                    </div>
+                    
+                    <div class="footnote">
+                        Enns, Blair. <a href="https://www.amazon.com/Four-Conversations-Selling-Expertise-Blair-Enns/dp/1735947105" target="_blank">The Four Conversations</a>. <a id="fn12" href="#src12">p67</a>
+                    </div>
+                    
+                    <div class="footnote">
+                        Feng, Tiankai. <a href="https://www.amazon.com/Humanizing-Data-Strategy-Leading-Heart/dp/1634625153" target="_blank">Humanizing Data Strategy</a>. <a id="fn11" href="#src11">p7</a>
+                    </div>
+                    
+                    <div class="footnote">
+                        Greever, Tom. <a href="https://www.amazon.com/Articulating-Design-Decisions-Communicate-Stakeholders/dp/1491921560" target="_blank">Articulating Design Decisions</a>. <a id="fn15" href="#src15">p4</a>, <a id="fn13" href="#src13">p9</a>, <a id="fn14" href="#src14">p36</a>, <a id="fn34" href="#src34">p41</a>, <a id="fn39" href="#src39">p42</a>, <a href="#fn37">p200</a>
+                    </div>
+                    
+                    <div class="footnote">
+                        Knaflic, Cole Nussbaumer. <a href="https://www.amazon.com/Storytelling-Data-Visualization-Business-Professionals/dp/1119002257" target="_blank">Storytelling with Data</a>. <a id="fn28" href="#src28">p20</a>, <a id="fn29" href="#src29">p20</a>
+                    </div>
+
+                    <div class="footnote">
+                        Lubbock, John. <a href="" target="_blank">The Beauties of Nature and the Wonders of the World We Live in</a>. <a id="fn18" href="#src18">p#</a>
+                    </div>                    
+                    
+                    <div class="footnote">
+                        Monteiro, Mike. <a href="https://www.amazon.com/Design-Job-Mike-Monteiro/dp/1937557049" target="_blank">Design is a Job</a>. <a id="fn30" href="#src30">p121</a>, <a id="fn32" href="#src32">p135</a>
+                    </div>
+                    
+                    <div class="footnote">
+                        Parrish, Shane. <a href="https://www.amazon.com/Clear-Thinking-Turning-Ordinary-Extraordinary/dp/0593086112" target="_blank">Clear Thinking</a>. <a id="fn35" href="#src35">p8</a>, <a id="fn36" href="#src36">p13</a>, <a id="fn37" href="#src37">p21</a>, <a id="fn20" href="#src20">p100</a>
+                    </div>
+                    
+                    <div class="footnote">
+                        Rock, David.<a href="https://www.amazon.com/Your-Brain-Work-Strategies-Distraction/dp/0061771295" target="_blank">Your Brain at Work</a>. <a id="fn31" href="#src31">p115</a>
+                    </div>
+                    
+                    <div class="footnote">
+                        Rubin, Rick. <a href="https://www.amazon.com/Creative-Act-Way-Being/dp/0593652886" target="_blank">The Creative Act</a>. <a id="fn33" href="#src33">p193</a>
+                    </div>
+                    
+                    <div class="footnote">
+                        Shander, Bill. <a href="https://www.amazon.com/Stakeholder-Whisperer-Uncovering-People-Before/dp/1394289529" target="_blank">Stakeholder Whispering</a>. <a id="fn3" href="#src3">ix</a>, <a id="fn16" href="#src16">p68</a>, <a id="fn17" href="#src17">p70</a>
+                    </div>
+                </div>
+
+            </article>
+
+            <!-- Related Content Section -->
+            <section class="related-content-section" id="related-content-section" style="display: none;">
+                <div class="related-content-header">
+                    <h3 class="related-content-title"><span>Related Content</span></h3>
+                </div>
+                <div class="related-content-grid" id="related-content-grid">
+                    <!-- Related content will be populated here -->
+                </div>
+            </section>
+
+            <footer class="content-footer-dramatic">
+                <div class="footer-header-section">
+                    <h2 class="footer-main-title">Ready for Next Steps?</h2>
+                    <div class="footer-description">
+                        <p>We bridge the gap between your data investments and business operations through <span class="service-item">Information Architecture</span>, <span class="service-item">Data Visualization</span>, <span class="service-item">Design</span>, <span class="service-item">Workshop Facilitation</span>, <span class="service-item">Training</span>, and <span class="service-item">Fractional Leadership</span>. We're technology platform agnostic and work with your existing infrastructure.</p>
+                    </div>
+                </div>
+
+                <div class="footer-cta-section">
+                    <div class="cta-box primary">
+                        <h3><span>Start the Conversation</span></h3>
+                        <p>Free consultation call to understand your environment and get clarity on your situation.</p>
+                        <a href="../contact.html" class="cta-button primary">Contact</a>
+                    </div>
+                    
+                    <div class="cta-box secondary">
+                        <h3><span>Explore More Ideas</span></h3>
+                        <p>Read deeper into organizational patterns and approaches that can change how your team works.</p>
+                        <a href="../content-index.html" class="cta-button secondary">Browse Content</a>
+                    </div>
+                </div>
+            </footer>
+
+            <p class="copyright-text">© 2025 Thinking Interface Design. All rights reserved.</p>
+        </div>
+    </main>
+
+    <!-- Load content data and populate page -->
+    <script src="../content-data.js"></script>
+    <script>
+        // Get the content ID from the URL filename
+        function getContentId() {
+            const path = window.location.pathname;
+            const filename = path.split('/').pop();
+            return filename.replace('.html', '');
+        }
+
+        // Format date for display
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+        }
+
+        // Get appropriate icon for content type
+        function getTypeIcon(type) {
+            if (type === 'Video') {
+                return `<svg class="meta-icon" viewBox="0 0 24 24">
+                    <path d="M10,16.5V7.5L16,12M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+                </svg>`;
+            } else {
+                return `<svg class="meta-icon" viewBox="0 0 24 24">
+                    <path d="M19,3H5C3.9,3 3,3.9 3,5V19C3,20.1 3.9,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.9 20.1,3 19,3M19,19H5V5H19V19M17,17H7V15H17V17M17,13H7V11H17V13M17,9H7V7H17V9Z" />
+                </svg>`;
+            }
+        }
+
+        // Load and display content
+        function loadContent() {
+            const contentId = getContentId();
+            
+            // Find the content item in the data
+            const contentItem = allContent.find(item => item.id === contentId);
+            
+            if (!contentItem) {
+                // Content not found, show error
+                document.getElementById('page-title').textContent = 'Content Not Found - Thinking Interface Design';
+                document.getElementById('content-title').innerHTML = '<span>Content Not Found</span>';
+                document.getElementById('content-body').innerHTML = '<p>The requested content could not be found.</p>';
+                return;
+            }
+
+            // Update page title and meta description
+            document.getElementById('page-title').textContent = `${contentItem.title} - Thinking Interface Design`;
+            document.getElementById('page-description').setAttribute('content', contentItem.metaDescription || contentItem.shortDescription);
+
+            // Update content header
+            const metaHtml = `
+                <div class="meta-item">
+                    <svg class="meta-icon" viewBox="0 0 24 24">
+                        <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                    </svg>
+                    <span class="meta-text">${formatDate(contentItem.date)}</span>
+                </div>`;
+
+            // Add read time if it exists
+            if (contentItem.readTime) {
+                const readTimeHtml = `
+                    <div class="meta-item">
+                        <svg class="meta-icon" viewBox="0 0 24 24">
+                            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.7L16.2,16.2Z"/>
+                        </svg>
+                        <span class="meta-text">${contentItem.readTime}</span>
+                    </div>`;
+                document.getElementById('content-meta').innerHTML = metaHtml + readTimeHtml;
+            } else {
+                document.getElementById('content-meta').innerHTML = metaHtml;
+            }
+
+            document.getElementById('content-title').innerHTML = `<span>${contentItem.title}</span>`;
+
+            // Handle video content
+            if (contentItem.type === 'Video' && contentItem.videoEmbedUrl) {
+                document.getElementById('content-video').style.display = 'block';
+                document.getElementById('video-iframe').src = contentItem.videoEmbedUrl;
+            }
+
+            // Load related content
+            loadRelatedContent(contentItem.relatedContent);
+        }
+
+        // Load related content section
+        function loadRelatedContent(relatedIds) {
+            if (!relatedIds || relatedIds.length === 0) return;
+
+            const relatedSection = document.getElementById('related-content-section');
+            const relatedGrid = document.getElementById('related-content-grid');
+            
+            relatedIds.forEach(id => {
+                const relatedItem = allContent.find(item => item.id === id);
+                if (!relatedItem) return;
+
+                const typeIcon = relatedItem.type === 'Video' 
+                    ? `<svg class="meta-icon" viewBox="0 0 24 24"><path d="M10,16.5V7.5L16,12M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg>`
+                    : `<svg class="meta-icon" viewBox="0 0 24 24"><path d="M19,3H5C3.9,3 3,3.9 3,5V19C3,20.1 3.9,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.9 20.1,3 19,3M19,19H5V5H19V19M17,17H7V15H17V17M17,13H7V11H17V13M17,9H7V7H17V9Z" /></svg>`;
+
+                const cardHTML = `
+                    <a href="../${relatedItem.contentPageUrl}" class="content-item-link">
+                        <div class="content-card">
+                            <div class="card-meta">
+                                <div class="meta-item">
+                                    ${typeIcon}
+                                    <span class="meta-text">${relatedItem.type}</span>
+                                </div>
+                                <div class="meta-item">
+                                    <svg class="meta-icon" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+                                    <span class="meta-text">${formatDate(relatedItem.date)}</span>
+                                </div>
+                                ${relatedItem.readTime ? `
+                                <div class="meta-item">
+                                    <svg class="meta-icon" viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.7L16.2,16.2Z"/></svg>
+                                    <span class="meta-text">${relatedItem.readTime}</span>
+                                </div>` : ''}
+                            </div>
+                            <h4 class="card-title">${relatedItem.title}</h4>
+                            <p class="card-description">${relatedItem.shortDescription}</p>
+                        </div>
+                    </a>
+                `;
+                
+                relatedGrid.insertAdjacentHTML('beforeend', cardHTML);
+            });
+
+            relatedSection.style.display = 'block';
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', loadContent);
+    </script>
+</body>
+</html>

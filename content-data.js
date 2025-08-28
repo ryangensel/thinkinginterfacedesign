@@ -37,5 +37,16 @@ const allContent = [
         metaDescription: 'Understand why wireframing dashboards matters for organizational alignment. Learn how proximity to business capabilities and complexity shape successful dashboard design processes.',
         readTime: '6 min read',
         relatedContent: ['why-smart-analytics-people-feel-stuck', 'data-visualization-philosophy']
+    },
+    {
+        id: 'designing-data-stories',
+        type: 'Article',
+        date: '2025-08-24',
+        title: 'Designing Data Stories',
+        shortDescription: 'The divide in the data community about wireframing dashboards reveals more about organizational dynamics than process preferences. Teams advocating to skip wireframes often mistake their environment for conscious choices. People from various functions, company scales, and skill levels consume community content and amplify what sounds like good advice without revealing the circumstances that shaped their preferences.',
+        contentPageUrl: 'content/designing-data-stories.html',
+        metaDescription: 'Understand why wireframing dashboards matters for organizational alignment. Learn how proximity to business capabilities and complexity shape successful dashboard design processes.',
+        readTime: '27 min read',
+        relatedContent: ['why-smart-analytics-people-feel-stuck', 'data-visualization-philosophy']
     }
 ];
