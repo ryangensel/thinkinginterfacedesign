@@ -1033,7 +1033,7 @@
     }
 
     .text-with-accent {
-        padding-left: clamp(32px, 5vw, 40px);
+        padding: clamp(12px, 3vw, 16px) clamp(6px, 2vw, 10px) clamp(12px, 3vw, 16px) clamp(32px, 5vw, 40px);
     }
     
     .slide-image {
@@ -1055,10 +1055,7 @@
         margin-top: clamp(40px, 6vh, 60px);
         padding-top: clamp(32px, 5vh, 40px);
     }
-    
-    .footnote {
-        font-size: clamp(0.8rem, 1.6vw, 0.9rem);
-    }
+
 }
 
 /* Mobile-specific adjustments */
