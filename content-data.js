@@ -12,19 +12,31 @@ const allContent = [
         contentPageUrl: 'content/why-smart-analytics-people-feel-stuck.html',
         metaDescription: 'Learn why analytics professionals feel stuck despite their expertise. Learn about the transition in analytics discipline, economic uncertainty, and AI hype that\'s amplifying workplace frustration.',
         readTime: '8 min watch',
-        relatedContent: ['data-visualization-philosophy', 'why-i-wireframe-dashboards']
+        relatedContent: ['designing-data-stories', 'data-visualization-philosophy',]
+    },
+    {
+        id: 'designing-data-stories',
+        type: 'Article',
+        isFeatured: 2,        
+        date: '2025-08-24',
+        title: 'Designing Data Stories',
+        shortDescription: 'If you're lucky, you\'ll work with lots of people who make you better at your job—but the ones who make you better as a person are much rarer. This isn\'t another talk about choosing the right charts; it\'s about recognizing that every data conversation is actually three conversations: what the data says, what people hear, and what they\'re willing to do about it.',
+        contentPageUrl: 'content/designing-data-stories.html',
+        metaDescription: 'Learn why data storytelling isn\'t about charts—it\'s about people. Discover how to bridge the gap between technical expertise and stakeholder understanding, navigate organizational politics, and transform data conversations into meaningful action through better communication and listening skills.',
+        readTime: '27 min read',
+        relatedContent: ['why-smart-analytics-people-feel-stuck', 'data-visualization-philosophy']
     },
     {
         id: 'data-visualization-philosophy',
         type: 'Article',
-        isFeatured: 2,
+        isFeatured: 3,
         date: '2025-08-24',
         title: 'Data Visualization Philosophy',
         shortDescription: 'Data visualization is about empowerment. Every chart, every metric, every interface we create either amplifies or reduces someone\'s agency to make decisions. This is about designing accessible tools for people to think critically about their working world and their ability to shape it, not just display numbers.',
         contentPageUrl: 'content/data-visualization-philosophy.html',
         metaDescription: 'Learn how data visualization empowers decision-making. Explore design principles that amplify human agency and create tools for constructive thinking about organizational change.',
         readTime: '10 min read',
-        relatedContent: ['why-smart-analytics-people-feel-stuck', 'why-i-wireframe-dashboards']
+        relatedContent: ['designing-data-stories', 'why-i-wireframe-dashboards']
     },
     {
         id: 'why-i-wireframe-dashboards',
@@ -36,17 +48,6 @@ const allContent = [
         contentPageUrl: 'content/why-i-wireframe-dashboards.html',
         metaDescription: 'Understand why wireframing dashboards matters for organizational alignment. Learn how proximity to business capabilities and complexity shape successful dashboard design processes.',
         readTime: '6 min read',
-        relatedContent: ['why-smart-analytics-people-feel-stuck', 'data-visualization-philosophy']
-    },
-    {
-        id: 'designing-data-stories',
-        type: 'Article',
-        date: '2025-08-24',
-        title: 'Designing Data Stories',
-        shortDescription: 'The divide in the data community about wireframing dashboards reveals more about organizational dynamics than process preferences. Teams advocating to skip wireframes often mistake their environment for conscious choices. People from various functions, company scales, and skill levels consume community content and amplify what sounds like good advice without revealing the circumstances that shaped their preferences.',
-        contentPageUrl: 'content/designing-data-stories.html',
-        metaDescription: 'Understand why wireframing dashboards matters for organizational alignment. Learn how proximity to business capabilities and complexity shape successful dashboard design processes.',
-        readTime: '27 min read',
-        relatedContent: ['why-smart-analytics-people-feel-stuck', 'data-visualization-philosophy']
-    }
+        relatedContent: ['data-visualization-philosophy', 'designing-data-stories']
+    }    
 ];
