@@ -991,7 +991,6 @@
 .footnotes-section {
     margin-top: clamp(60px, 8vh, 80px);
     padding-top: clamp(40px, 6vh, 60px);
-    border-top: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .footnote {
