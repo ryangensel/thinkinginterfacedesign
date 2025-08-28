@@ -1,14 +1,19 @@
         /* Hero Section */
         .hero-section {
             padding-top: clamp(140px, 20vh, 240px);
-            padding-bottom: clamp(80px, 15vh, 140px);
             padding-left: clamp(20px, 5vw, 60px); 
             padding-right: clamp(20px, 5vw, 60px); 
             margin: 0 auto;
             text-align: left;
             position: relative;
-            min-height: clamp(50vh, 55vh, 60vh); 
+            min-height: 60vh;
         }
+
+        @media (max-width: 1200px) {
+            .hero-section {
+                min-height: 70vh;
+            }
+        }        
 
         .hero-message {
             font-size: clamp(2.5rem, 6vw, 4.5rem);
@@ -18,7 +23,7 @@
             opacity: 0;
             transform: translateY(30px);
             transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-            max-width: 1100px;
+            max-width: 1200px;
         }
         
         .hero-message.active {
