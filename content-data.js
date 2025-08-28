@@ -20,7 +20,7 @@ const allContent = [
         isFeatured: 2,        
         date: '2025-08-24',
         title: 'Designing Data Stories',
-        shortDescription: 'If you're lucky, you\'ll work with lots of people who make you better at your job—but the ones who make you better as a person are much rarer. This isn\'t another talk about choosing the right charts; it\'s about recognizing that every data conversation is actually three conversations: what the data says, what people hear, and what they\'re willing to do about it.',
+        shortDescription: 'If you\'re lucky, you\'ll work with lots of people who make you better at your job—but the ones who make you better as a person are much rarer. This isn\'t another talk about choosing the right charts; it\'s about recognizing that every data conversation is actually three conversations: what the data says, what people hear, and what they\'re willing to do about it.',
         contentPageUrl: 'content/designing-data-stories.html',
         metaDescription: 'Learn why data storytelling isn\'t about charts—it\'s about people. Discover how to bridge the gap between technical expertise and stakeholder understanding, navigate organizational politics, and transform data conversations into meaningful action through better communication and listening skills.',
         readTime: '27 min read',
@@ -41,7 +41,6 @@ const allContent = [
     {
         id: 'why-i-wireframe-dashboards',
         type: 'Article',
-        isFeatured: 3,
         date: '2025-08-24',
         title: 'Why I Wireframe Dashboards',
         shortDescription: 'The divide in the data community about wireframing dashboards reveals more about organizational dynamics than process preferences. Teams advocating to skip wireframes often mistake their environment for conscious choices. People from various functions, company scales, and skill levels consume community content and amplify what sounds like good advice without revealing the circumstances that shaped their preferences.',
